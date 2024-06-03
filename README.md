@@ -59,11 +59,13 @@ camp-esprit
 │   │   ├── assets/
 │   ├── angular.json
 │   ├── package.json
-│   ├── tsconfig.json
+│   └── tsconfig.json
 ├── camp-esprit-server
 │   ├── .mvn/
 │   ├── src/
-│   ├── pom.xml
+│   └── pom.xml
+├── LICENSE
+└── README.md 
 ```
 
 ## Configuration
