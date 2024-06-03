@@ -75,4 +75,8 @@ export class KeycloakService {
         console.error('Logout failed:', error);
       });
   }
+  accountManagement() {
+    this.keycloak.accountManagement();
+  }
+
 }
