@@ -14,6 +14,11 @@ Before you begin, ensure you have the following installed on your machine:
 - **Maven**
 - **Git**
 
+## Physical Architecture
+
+The physical architecture of the project is as follows:
+![Physical Architecture](diagrams/phy-arch.png)
+
 ## Installation
 
 ### 1. Clone the Repository
