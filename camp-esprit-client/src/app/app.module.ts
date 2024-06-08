@@ -1,17 +1,13 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { KeycloakService, KeycloakBearerInterceptor } from 'keycloak-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { KeycloakService } from './services/keycloak/keycloak.service';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpTokenInterceptor } from './services/http-interceptor/http-token.interceptor';
 import { MenuComponent } from './components/menu/menu.component';
 import { HomeComponent } from './pages/home/home.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { initializeKeycloak } from './services/init/keycloak-init.factory';
 
-export function kcFactory(kcServcie: KeycloakService) {
-  return () => kcServcie.init();
-}
 
 @NgModule({
   declarations: [
@@ -21,19 +17,22 @@ export function kcFactory(kcServcie: KeycloakService) {
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
   ],
   providers: [
+    KeycloakService,
     {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpTokenInterceptor,
-      multi: true
-    }, {
       provide: APP_INITIALIZER,
       deps: [KeycloakService],
-      useFactory: kcFactory,
+      useFactory: initializeKeycloak,
       multi: true
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: KeycloakBearerInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })

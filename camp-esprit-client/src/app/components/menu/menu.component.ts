@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { KeycloakService } from 'src/app/services/keycloak/keycloak.service';
+import { KeycloakOperationService } from 'src/app/services/keycloak/keycloak.service';
 
 
 @Component({
@@ -9,9 +9,9 @@ import { KeycloakService } from 'src/app/services/keycloak/keycloak.service';
 })
 export class MenuComponent implements OnInit {
 
-  username = this.keycloakService.profile?.username;
+  username = this.keycloakService._profile?.username;
 
-  constructor(private keycloakService: KeycloakService) { }
+  constructor(private keycloakService: KeycloakOperationService) { }
 
   ngOnInit(): void {
     const linkColor = document.querySelectorAll('.nav-link');
@@ -26,11 +26,8 @@ export class MenuComponent implements OnInit {
     });
   }
 
-  async logout(): Promise<void> {
-    await this.keycloakService.logout();
+  logout(): void {
+    this.keycloakService.logout();
   }
 
-  accountManagement(): void {
-    this.keycloakService.accountManagement();
-  }
 }
