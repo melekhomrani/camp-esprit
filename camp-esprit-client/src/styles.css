@@ -1,3 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.min.css";
 @import "@fortawesome/fontawesome-free/css/all.min.css";
+body {
+  background-color: #FFFAE8;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.btn-custom {
+  background-color: #545BFF;
+  color: white;
+  border: none;
+}
+
+.btn-custom:hover {
+  background-color: #3c44d3;
+}
+
+.input-custom {
+  background-color: #F5F3F3;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+}

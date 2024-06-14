@@ -1,0 +1,17 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="input-group mb-3">
+      <input [(ngModel)]="content" type="text" class="form-control input-custom" placeholder="What's new today?" />
+      <div class="input-group-append">
+        <button class="btn btn-image" (click)="imageInput.click()">
+          <i class="fas fa-camera"></i>
+        </button>
+      </div>
+    </div>
+    <input type="file" #imageInput (change)="onFileSelected($event)" class="d-none" />
+
+    <div class="text-center">
+      <button class="btn btn-custom" (click)="postThread()">Post</button>
+    </div>
+  </div>
+</div>

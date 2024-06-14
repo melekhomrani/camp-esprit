@@ -1,0 +1,22 @@
+<div class="card mb-3">
+  <div class="card-header d-flex align-items-center">
+    <img [src]="thread.avatarUrl" class="rounded-circle avatar" alt="User Avatar">
+    <strong class="ml-2">{{ thread.user }}</strong>
+  </div>
+  <img *ngIf="thread.imageUrl" [src]="thread.imageUrl" class="card-img-top" alt="Post Image">
+  <div class="card-body">
+    <p class="card-text">{{ thread.content }}</p>
+    <button class="btn btn-link" (click)="likeThread()">
+      <i class="fas fa-thumbs-up"></i> Like ({{ thread.likes }})
+    </button>
+    <div *ngFor="let comment of thread.comments" class="mt-2">
+      <strong>{{ comment.user }}:</strong> {{ comment.content }}
+    </div>
+    <div class="input-group mt-3">
+      <input [(ngModel)]="newComment" type="text" class="form-control input-custom" placeholder="Add a comment" />
+      <div class="input-group-append">
+        <button class="btn btn-custom" (click)="postComment()">Comment</button>
+      </div>
+    </div>
+  </div>
+</div>

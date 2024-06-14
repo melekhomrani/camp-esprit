@@ -1,0 +1,9 @@
+<div class="navcont">
+  <img src="assets/icon.png" alt="Logo" class="nav-icon">
+  <nav class="navbar">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" [routerLink]="['/feed']" routerLinkActive="active" [ngClass]="{ 'inactive': !isActive('/feed') }">Feed</a>
+      <a class="nav-item nav-link" [routerLink]="['/map']" routerLinkActive="active" [ngClass]="{ 'inactive': !isActive('/map') }">Map</a>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,32 @@
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #545BFF;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+}
+
+.ml-2 {
+  margin-left: 8px;
+}
+
+.input-custom {
+  background-color: #F5F3F3;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.btn-custom {
+  background-color: #545BFF;
+  color: white;
+  border: none;
+}
+
+.btn-custom:hover {
+  background-color: #3c44d3;
+}
