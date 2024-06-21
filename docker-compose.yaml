@@ -13,6 +13,19 @@ services:
       - mysql_data:/var/lib/mysql
     networks:
       - camp-esprit-network
+  
+  mysql-backend:
+    container_name: camp-esprit-mysql-server
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: camp_esprit
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - camp-esprit-network
 
   keycloak:
     container_name: camp-esprit-keycloak

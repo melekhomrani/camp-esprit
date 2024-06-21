@@ -32,7 +32,7 @@
   "registrationAllowed" : true,
   "registrationEmailAsUsername" : false,
   "rememberMe" : true,
-  "verifyEmail" : true,
+  "verifyEmail" : false,
   "loginWithEmailAllowed" : true,
   "duplicateEmailsAllowed" : false,
   "resetPasswordAllowed" : true,
@@ -96,6 +96,14 @@
     } ],
     "client" : {
       "cec" : [ {
+        "id" : "30938a06-f9c5-4981-ab7a-827b4743e1d4",
+        "name" : "user",
+        "description" : "",
+        "composite" : false,
+        "clientRole" : true,
+        "containerId" : "716a9f81-978c-4c21-bbd1-c062e7b3fe1f",
+        "attributes" : { }
+      }, {
         "id" : "040b86cf-c30e-4ea2-8651-8a361f5b044b",
         "name" : "admin",
         "description" : "",
@@ -442,7 +450,7 @@
       "credentialData" : "{\"hashIterations\":210000,\"algorithm\":\"pbkdf2-sha512\",\"additionalParameters\":{}}"
     } ],
     "disableableCredentialTypes" : [ ],
-    "requiredActions" : [ ],
+    "requiredActions" : [ "VERIFY_EMAIL" ],
     "realmRoles" : [ "default-roles-camp-esprit-realm" ],
     "notBefore" : 0,
     "groups" : [ ]
@@ -490,6 +498,9 @@
     "lastName" : "homrani",
     "email" : "melek@mail.com",
     "emailVerified" : true,
+    "attributes" : {
+      "locale" : [ "fr" ]
+    },
     "createdTimestamp" : 1717280123955,
     "enabled" : true,
     "totp" : false,
@@ -674,7 +685,7 @@
     "enabled" : true,
     "alwaysDisplayInConsole" : false,
     "clientAuthenticatorType" : "client-secret",
-    "redirectUris" : [ "http://localhost:4200/*" ],
+    "redirectUris" : [ "http://localhost:4200/*", "http://localhost:8089/*" ],
     "webOrigins" : [ "*" ],
     "notBefore" : 0,
     "bearerOnly" : false,
@@ -688,9 +699,11 @@
     "protocol" : "openid-connect",
     "attributes" : {
       "oidc.ciba.grant.enabled" : "false",
-      "post.logout.redirect.uris" : "http://localhost:4200/*",
-      "oauth2.device.authorization.grant.enabled" : "false",
+      "client.secret.creation.time" : "1717779865",
       "backchannel.logout.session.required" : "true",
+      "post.logout.redirect.uris" : "http://localhost:4200/*",
+      "display.on.consent.screen" : "false",
+      "oauth2.device.authorization.grant.enabled" : "false",
       "backchannel.logout.revoke.offline.tokens" : "false"
     },
     "authenticationFlowBindingOverrides" : { },
