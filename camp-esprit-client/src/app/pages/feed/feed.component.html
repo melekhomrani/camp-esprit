@@ -1,0 +1,10 @@
+<div class="container mt-4">
+  <app-post-thread (newThread)="addThread($event)"></app-post-thread>
+  <div *ngFor="let thread of threads">
+    <app-thread [thread]="thread"></app-thread>
+  </div>
+  <button class="btn btn-primary btn-sm rounded-pill position-absolute top-0 end-0 mt-3 me-3">
+    Logout <i class="fas fa-sign-out-alt ms-2"></i>
+  </button>
+</div>
+

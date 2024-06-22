@@ -7,6 +7,13 @@ import { MenuComponent } from './components/menu/menu.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { initializeKeycloak } from './services/init/keycloak-init.factory';
+import { FeedComponent } from './pages/feed/feed.component';
+import { ThreadComponent } from './components/thread/thread.component';
+import { PostThreadComponent } from './components/post-thread/post-thread.component';
+import {FormsModule} from "@angular/forms";
+import { MapComponent } from './pages/map/map.component';
+import { PopupComponent } from './components/popup/popup.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -14,11 +21,18 @@ import { initializeKeycloak } from './services/init/keycloak-init.factory';
     AppComponent,
     HomeComponent,
     MenuComponent,
+    FeedComponent,
+    ThreadComponent,
+    PostThreadComponent,
+    MapComponent,
+    PopupComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    FormsModule,
   ],
   providers: [
     KeycloakService,

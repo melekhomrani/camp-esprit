@@ -1,0 +1,32 @@
+.input-custom {
+  background-color: #F5F3F3;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.btn-custom {
+  background-color: #545BFF;
+  color: white;
+  border: none;
+  margin-top: 10px;
+}
+
+.btn-custom:hover {
+  background-color: #3c44d3;
+}
+
+.btn-image {
+  background-color: #545BFF;
+  color: white;
+  border: none;
+}
+
+.btn-image:hover {
+  background-color: #3c44d3;
+}
+
+.text-center {
+  text-align: center;
+}
