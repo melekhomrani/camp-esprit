@@ -30,7 +30,7 @@ public class User {
 	private String email;
 
 	private String password;
-	@Temporal(TemporalType.TIME.DATE)
+//	@Temporal(TemporalType.TIME.DATE)
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private String birthday;
 	
