@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/test")
 @Slf4j
 public class TestController {
-    @GetMapping
+    @GetMapping("faza")
     public String forAll() {
         log.info("Test endpoint accessed");
         return "Hello World for ALl";
@@ -37,7 +37,7 @@ public class TestController {
         return "Hello World for ROLE_USER or ROLE_ADMIN";
     }
 
-    @GetMapping("/")
+    @GetMapping(produces = "application/json")
     public String index(@AuthenticationPrincipal Jwt jwt) {
         return String.format("Hello, %s!", jwt.getClaims());
     }

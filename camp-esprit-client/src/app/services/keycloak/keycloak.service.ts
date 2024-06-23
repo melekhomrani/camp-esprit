@@ -16,6 +16,11 @@ export class KeycloakOperationService {
     this.keycloak.logout();
   }
   async getUserProfile(): Promise<UserProfile> {
-    return this._profile = (await this.keycloak.loadUserProfile()) as UserProfile;
+    if (this._profile) {
+      return this._profile;
+    }
+    this._profile = (await this.keycloak.loadUserProfile()) as UserProfile;
+    this._profile.token = await this.keycloak.getToken();
+    return this._profile;
   }
 }
