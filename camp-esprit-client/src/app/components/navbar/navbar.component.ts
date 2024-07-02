@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { KeycloakOperationService } from 'src/app/services/keycloak/keycloak.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,10 @@ import { Router, NavigationEnd } from '@angular/router';
 export class NavbarComponent {
   currentRoute: string = '';
 
-  constructor(private router: Router) {
+  username = this.keycloakService._profile?.username;
+
+  constructor(private keycloakService: KeycloakOperationService, private router: Router) {
+
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.currentRoute = event.url;
@@ -20,4 +24,9 @@ export class NavbarComponent {
   isActive(route: string): boolean {
     return this.currentRoute === route;
   }
+
+  logout(): void {
+    this.keycloakService.logout();
+  }
+
 }

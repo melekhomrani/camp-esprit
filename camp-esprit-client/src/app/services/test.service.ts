@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class TestService {
   private readonly backendUrl = 'http://localhost:8089';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getFromBackend(): Observable<Array<any>> {
+  getFromBackend(): Observable<any> {
     return this.http.get<any>(`${this.backendUrl}/api/test/user`);
   }
 }

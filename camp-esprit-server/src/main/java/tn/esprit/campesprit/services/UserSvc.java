@@ -2,23 +2,23 @@ package tn.esprit.campesprit.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import tn.esprit.campesprit.entities.UserEntity;
-import tn.esprit.campesprit.repositories.UserRepository;
+import tn.esprit.campesprit.entities.User;
+import tn.esprit.campesprit.repositories.UserRepo;
 import tn.esprit.campesprit.services.iservices.UserIService;
 
 @Service
 @AllArgsConstructor
-public class UserService implements UserIService {
+public class UserSvc implements UserIService {
 
-    private final UserRepository userRepository;
+    private final UserRepo userRepository;
 
     @Override
-    public UserEntity getByEMAIL(String email) {
+    public User getByEMAIL(String email) {
         return userRepository.getByEmail(email);
     }
 
     @Override
-    public UserEntity getByUSERNAME(String username) {
+    public User getByUSERNAME(String username) {
         return userRepository.getByUsername(username);
     }
 }

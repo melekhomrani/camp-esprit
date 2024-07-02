@@ -9,10 +9,9 @@
 }
 
 .nav-icon {
-  padding-left: 20px;
-  padding-top: 20px;
-  width: 85px;
-  height: 55px;
+  padding: 0.5rem;
+  width: 5rem;
+  height: 4rem;
 }
 
 .navbar-nav {
@@ -23,7 +22,7 @@
 }
 
 .nav-item {
-  margin: 0 15px;
+  margin: 0.5rem;
 }
 
 .nav-link {
@@ -41,13 +40,20 @@
 .nav-link.active {
   opacity: 1;
   color:#545BFF;
-  font-size: 1.5rem;
 
 }
 
 .navcont{
   display: flex;
   flex-direction: row;
-
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 2rem 0 2rem ;
+  border-bottom: #545BFF 1px solid;
 }
 
+.logout-btn{
+  background-color: rgb(53, 3, 255);
+  color: white;
+  padding-bottom: 10px;
+}

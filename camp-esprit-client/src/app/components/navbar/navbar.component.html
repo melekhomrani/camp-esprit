@@ -2,8 +2,17 @@
   <img src="assets/icon.png" alt="Logo" class="nav-icon">
   <nav class="navbar">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" [routerLink]="['/feed']" routerLinkActive="active" [ngClass]="{ 'inactive': !isActive('/feed') }">Feed</a>
-      <a class="nav-item nav-link" [routerLink]="['/map']" routerLinkActive="active" [ngClass]="{ 'inactive': !isActive('/map') }">Map</a>
+      <a class="nav-item nav-link" [routerLink]="['/home']" routerLinkActive="active"
+        [ngClass]="{ 'inactive': !isActive('/home') }">Home</a>
+      <a class="nav-item nav-link" [routerLink]="['/feed']" routerLinkActive="active"
+        [ngClass]="{ 'inactive': !isActive('/feed') }">Feed</a>
+      <a class="nav-item nav-link" [routerLink]="['/map']" routerLinkActive="active"
+        [ngClass]="{ 'inactive': !isActive('/map') }">Map</a>
+      <a class="nav-item nav-link" [routerLink]="['/statistics']" routerLinkActive="active"
+        [ngClass]="{ 'inactive': !isActive('/statistics') }">statistics</a>
     </div>
   </nav>
+  <button class="btn logout-btn d-flex justify-content-center align-items-center" type="submit" (click)="logout()">
+    {{"Logout"}} <i class="fas fa-sign-out-alt ms-2"></i>
+  </button>
 </div>

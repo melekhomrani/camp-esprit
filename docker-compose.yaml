@@ -23,9 +23,9 @@ services:
     ports:
       - "3307:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - mysql_data_backend:/var/lib/mysql
     networks:
-      - camp-esprit-network
+        - camp-esprit-network
 
   keycloak:
     container_name: camp-esprit-keycloak
@@ -85,9 +85,25 @@ services:
     networks:
       - camp-esprit-network
 
+  sync_db:
+    container_name: camp-esprit-sync-db
+    image: camp-esprit-sync-db
+    build:
+      context: ./camp-esprit-sync-db
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql
+      - mysql-backend
+    volumes:
+      - ./db-sync:/var/log
+    networks:
+      - camp-esprit-network
+
 networks:
   camp-esprit-network:
     driver: bridge
 volumes:
   mysql_data:
+    driver: local
+  mysql_data_backend:
     driver: local

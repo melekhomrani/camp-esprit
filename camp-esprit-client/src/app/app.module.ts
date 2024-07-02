@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { KeycloakService, KeycloakBearerInterceptor } from 'keycloak-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { initializeKeycloak } from './services/init/keycloak-init.factory';
@@ -14,19 +13,20 @@ import {FormsModule} from "@angular/forms";
 import { MapComponent } from './pages/map/map.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { StatisticsComponent } from './pages/statistics/statistics.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    MenuComponent,
     FeedComponent,
     ThreadComponent,
     PostThreadComponent,
     MapComponent,
     PopupComponent,
     NavbarComponent,
+    StatisticsComponent,
   ],
   imports: [
     BrowserModule,

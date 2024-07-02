@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import tn.esprit.campesprit.entities.UserEntity;
-import tn.esprit.campesprit.services.UserService;
+import tn.esprit.campesprit.entities.User;
+import tn.esprit.campesprit.services.UserSvc;
 
 @RestController
 @RequestMapping("/api/users")
 @AllArgsConstructor
 @Slf4j
 @CrossOrigin(origins = "http://localhost:4200")
-public class UserController {
+public class UserCtrl {
 
-    private final UserService userService;
+    private final UserSvc userService;
 
     @GetMapping("infos")
-    public UserEntity getUserInfos(@AuthenticationPrincipal Jwt jwt) {
+    public User getUserInfos(@AuthenticationPrincipal Jwt jwt) {
         var username = jwt.getClaimAsString("preferred_username");
         log.info("User with username {} accessed his infos", username);
         var user = userService.getByUSERNAME(username);

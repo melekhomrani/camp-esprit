@@ -4,10 +4,11 @@ import { HomeComponent } from './pages/home/home.component';
 import { AuthGuard } from './services/guard/auth.guard';
 import { FeedComponent } from "./pages/feed/feed.component";
 import { MapComponent } from "./pages/map/map.component";
+import { StatisticsComponent } from './pages/statistics/statistics.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent,
     canActivate: [AuthGuard],
   },
@@ -18,6 +19,15 @@ const routes: Routes = [
   {
     path: 'map', component: MapComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'statistics',
+    component: StatisticsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: '**',
+    redirectTo: '/home',
   }
 
 ];
