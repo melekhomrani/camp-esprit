@@ -1,5 +1,6 @@
 package tn.esprit.campesprit.Map;
 
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.campesprit.User.User;
@@ -10,11 +11,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class EventServices {
-	@Autowired
 	private EventRepository eventRepo;
 	
-	@Autowired
 	private UserRepository userRepo;
 
 	public Event addEvent(Event event) {
