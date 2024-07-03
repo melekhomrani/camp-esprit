@@ -27,7 +27,7 @@ public class StatCtrl {
     private final CredIService credService;
 
     //    Users stats
-    @GetMapping("/users/infossss")
+    @GetMapping("/users/infos")
     public User getUserInfos(@AuthenticationPrincipal Jwt jwt) {
         var username = jwt.getClaimAsString("preferred_username");
         log.info("User with username {} accessed his infos", username);

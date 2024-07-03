@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { KeycloakOperationService } from 'src/app/services/keycloak/keycloak.service';
 import { StatisticsService } from 'src/app/services/statistics/statistics.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { StatisticsService } from 'src/app/services/statistics/statistics.servic
 })
 export class StatisticsComponent implements OnInit {
 
-  constructor(private statisticsService: StatisticsService) { }
+  constructor(private statisticsService: StatisticsService, private keycloakService: KeycloakOperationService) { }
 
   infos: any;
   countEventsByUserId: any;
@@ -20,6 +21,9 @@ export class StatisticsComponent implements OnInit {
     this.CountEventsByUserId();
     this.CountEventsByType();
     this.CountCredsByType();
+    this.keycloakService.getUserProfile().then((data) => {
+      console.log("UserProfile", data);
+    });
   }
 
 
