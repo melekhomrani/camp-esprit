@@ -1,0 +1,19 @@
+.row {
+  margin: 0;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  gap: 10px;
+  flex-direction: row;
+}
+.row > * {
+  height: 40rem;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f8f9fa;
+}

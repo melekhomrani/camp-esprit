@@ -6,6 +6,8 @@ import tn.esprit.keycloakstats.entities.User;
 import tn.esprit.keycloakstats.repositories.UserRepository;
 import tn.esprit.keycloakstats.services.iservices.UserIService;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class UserService implements UserIService {
@@ -20,5 +22,9 @@ public class UserService implements UserIService {
     @Override
     public User getByUSERNAME(String username) {
         return userRepository.getByUsername(username);
+    }
+
+    public List<Object[]> countUsersByEmailVerified() {
+        return userRepository.countUsersByEmailVerified();
     }
 }

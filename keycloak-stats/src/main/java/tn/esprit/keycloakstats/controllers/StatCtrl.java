@@ -8,12 +8,15 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import tn.esprit.keycloakstats.dto.StatsResponse;
+import tn.esprit.keycloakstats.dto.IsEmailVerifResponse;
 import tn.esprit.keycloakstats.entities.User;
 import tn.esprit.keycloakstats.services.iservices.CredIService;
 import tn.esprit.keycloakstats.services.iservices.EventIService;
 import tn.esprit.keycloakstats.services.iservices.UserIService;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api")
@@ -36,31 +39,45 @@ public class StatCtrl {
         return user;
     }
 
+    @GetMapping("/users/countByEmailVerified")
+    public List<IsEmailVerifResponse> countUsersByEmailVerified() {
+        return convertToIsEmailVerifResponse(userService.countUsersByEmailVerified());
+    }
+
     //    Events stats
     @GetMapping("/events/countByType")
-    public List<Object[]> countEventsByType() {
-        return eventService.countEventsByType();
+    public List<StatsResponse> countEventsByType() {
+        return convertToStatsResponse(eventService.countEventsByType());
     }
 
     @GetMapping("/events/countByIpAddress")
-    public List<Object[]> countEventsByIpAddress() {
-        return eventService.countEventsByIpAddress();
+    public List<StatsResponse> countEventsByIpAddress() {
+        return convertToStatsResponse(eventService.countEventsByIpAddress());
     }
 
     @GetMapping("/events/countByUserId")
-    public List<Object[]> countEventsByUserId() {
-        return eventService.countEventsByUserId();
+    public List<StatsResponse> countEventsByUserId() {
+        return convertToStatsResponse(eventService.countEventsByUserId());
     }
 
     @GetMapping("/events/countByRealmId")
-    public List<Object[]> countEventsByRealmId() {
-        return eventService.countEventsByRealmId();
+    public List<StatsResponse> countEventsByRealmId() {
+        return convertToStatsResponse(eventService.countEventsByRealmId());
     }
 
     //    Creds stats
     @GetMapping("/creds/countByType")
-    public List<Object[]> countCredsByType() {
-        return credService.countCredsByType();
+    public List<StatsResponse> countCredsByType() {
+        return convertToStatsResponse(credService.countCredsByType());
+    }
+
+    static List<StatsResponse> convertToStatsResponse(List<Object[]> stats) {
+        return stats.stream().map(stat -> new StatsResponse((String) stat[0], (Number) stat[1])).collect(Collectors.toList());
+    }
+
+    static List<IsEmailVerifResponse> convertToIsEmailVerifResponse(List<Object[]> stats) {
+//        map each object and if the first element is 0 return it as "email not verified" else return "email verified"
+        return stats.stream().map(stat -> new IsEmailVerifResponse((Byte) stat[0] == 1 ? "email verified" : "email not verified", (Number) stat[1])).collect(Collectors.toList());
     }
 }
 

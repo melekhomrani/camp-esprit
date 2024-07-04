@@ -21,9 +21,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    // this requires Admin role
     path: 'statistics',
     component: StatisticsComponent,
     canActivate: [AuthGuard],
+    data: { roles: ['admin'] }
   },
   {
     path: '**',

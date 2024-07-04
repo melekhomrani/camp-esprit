@@ -60,6 +60,12 @@ export class StatisticsService {
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
+  CountByEmailVerified(): Observable<any> {
+    return this.http
+      .get(`${this.baseurl}/users/countByEmailVerified`)
+      .pipe(retry(1), catchError(this.errorHandl));
+  }
+
   // Error handling
   errorHandl(error: any) {
     let errorMessage = '';
