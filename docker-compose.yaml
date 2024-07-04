@@ -62,18 +62,7 @@ services:
       - ./db-sync:/var/log
     networks:
       - camp-esprit-network
-  server:
-    container_name: camp-esprit-server
-    image: camp-esprit-server
-    build:
-      context: ./camp-esprit-server
-      dockerfile: Dockerfile
-    ports:
-      - "8081:8081"
-    depends_on:
-      - keycloak
-    networks:
-      - camp-esprit-network
+
 
 networks:
   camp-esprit-network:
