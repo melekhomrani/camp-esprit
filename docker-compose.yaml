@@ -25,7 +25,7 @@ services:
     volumes:
       - mysql_data_backend:/var/lib/mysql
     networks:
-        - camp-esprit-network
+      - camp-esprit-network
 
   keycloak:
     container_name: camp-esprit-keycloak
@@ -42,12 +42,13 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
       KC_HOSTNAME_STRICT: "false"
-    command: 
+    command:
       - start-dev
     depends_on:
       - mysql
     networks:
       - camp-esprit-network
+
 
   sync_db:
     container_name: camp-esprit-sync-db
@@ -62,6 +63,7 @@ services:
       - ./db-sync:/var/log
     networks:
       - camp-esprit-network
+
 
 
 networks:

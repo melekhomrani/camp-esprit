@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { KeycloakService, KeycloakBearerInterceptor } from 'keycloak-angular';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,9 +14,16 @@ import { MapComponent } from './pages/map/map.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { CountCredsByTypeComponent } from './components/charts/count-creds-by-type/count-creds-by-type.component';
+import { CountEventsByTypeComponent } from './components/charts/count-events-by-type/count-events-by-type.component';
+import { CountEventsByUseridComponent } from './components/charts/count-events-by-userid/count-events-by-userid.component';
+import { CountEventsByTypeSecondComponent } from './components/charts/count-events-by-type-second/count-events-by-type-second.component';
+import { CountVerifiedEmailsComponent } from './components/charts/count-verified-emails/count-verified-emails.component';
 
 
 @NgModule({
+  schemas: [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ],
   declarations: [
     AppComponent,
     HomeComponent,
@@ -27,12 +34,18 @@ import { StatisticsComponent } from './pages/statistics/statistics.component';
     PopupComponent,
     NavbarComponent,
     StatisticsComponent,
+    CountCredsByTypeComponent,
+    CountEventsByTypeComponent,
+    CountEventsByUseridComponent,
+    CountEventsByTypeSecondComponent,
+    CountVerifiedEmailsComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    NgApexchartsModule
   ],
   providers: [
     KeycloakService,
