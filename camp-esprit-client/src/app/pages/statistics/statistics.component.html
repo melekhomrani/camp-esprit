@@ -1,29 +1,15 @@
-<p>statistics works!</p>
-<h3>
-  the infos are:
-  {{this.infos | json}}
-</h3>
-
-<br>
-<br>
-
-<h3>
-  the countEventsByUserId are:
-  {{this.countEventsByUserId | json}}
-</h3>
-
-<br>
-<br>
-
-<h3>
-  the countEventsByType are:
-  {{this.countEventsByType | json}}
-</h3>
-
-<br>
-<br>
-
-<h3>
-  the credByTypes are:
-  {{this.credsByType | json}}
-</h3>
+<h1>hello</h1>
+<div class="row justify-content-center align-items-center g-2">
+  <div>
+    <app-count-creds-by-type [data]="this.credsByType"></app-count-creds-by-type>
+  </div>
+  <div>
+    <app-count-events-by-type [data]="this.countEventsByType"></app-count-events-by-type>
+  </div>
+  <div>
+    <app-count-verified-emails [data]="this.countVerifiedEmails"></app-count-verified-emails>
+  </div>
+  <div>
+    <app-count-events-by-type-second [data]="this.countEventsByType"></app-count-events-by-type-second>
+  </div>
+</div>

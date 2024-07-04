@@ -12,6 +12,8 @@ export class NavbarComponent {
 
   username = this.keycloakService._profile?.username;
 
+  isAdmin = this.keycloakService.hasRole('admin');
+
   constructor(private keycloakService: KeycloakOperationService, private router: Router) {
 
     this.router.events.subscribe(event => {

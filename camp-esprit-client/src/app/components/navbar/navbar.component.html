@@ -8,7 +8,7 @@
         [ngClass]="{ 'inactive': !isActive('/feed') }">Feed</a>
       <a class="nav-item nav-link" [routerLink]="['/map']" routerLinkActive="active"
         [ngClass]="{ 'inactive': !isActive('/map') }">Map</a>
-      <a class="nav-item nav-link" [routerLink]="['/statistics']" routerLinkActive="active"
+      <a class="nav-item nav-link" *ngIf="isAdmin" [routerLink]="['/statistics']" routerLinkActive="active"
         [ngClass]="{ 'inactive': !isActive('/statistics') }">statistics</a>
     </div>
   </nav>

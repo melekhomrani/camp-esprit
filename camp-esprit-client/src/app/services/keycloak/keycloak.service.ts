@@ -23,4 +23,11 @@ export class KeycloakOperationService {
     this._profile.token = await this.keycloak.getToken();
     return this._profile;
   }
+
+  // Check if the current user has a specific role
+  public hasRole(role: string): boolean {
+    return this.keycloak.isUserInRole(role);
+  }
+
+
 }
