@@ -8,12 +8,12 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: camp_esprit
     ports:
-      - "3306:3306"
+      - "3308:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
       - camp-esprit-network
-  
+
   mysql-backend:
     container_name: camp-esprit-mysql-server
     image: mysql:8.0
@@ -31,12 +31,12 @@ services:
     container_name: camp-esprit-keycloak
     image: quay.io/keycloak/keycloak:24.0.2
     ports:
-      - "8080:8080"
+      - "8070:8080"
     environment:
       KC_DB: mysql
       KC_DB_URL_DATABASE: camp_esprit
       KC_DB_URL_HOST: mysql
-      KC_DB_URL_PORT: 3306
+      KC_DB_URL_PORT: 3308
       KC_DB_USERNAME: root
       KC_DB_PASSWORD: root
       KEYCLOAK_ADMIN: admin
@@ -46,42 +46,6 @@ services:
       - start-dev
     depends_on:
       - mysql
-    networks:
-      - camp-esprit-network
-
-  server:
-    container_name: camp-esprit-server
-    image: camp-esprit-server
-    build:
-      context: ./camp-esprit-server
-      dockerfile: Dockerfile
-    ports:
-      - "8081:8081"
-    depends_on:
-      - keycloak
-    networks:
-      - camp-esprit-network
-
-  client:
-    container_name: camp-esprit-client
-    image: camp-esprit-client
-    build:
-      context: ./camp-esprit-client
-      dockerfile: Dockerfile
-    ports:
-      - "4200:4200"
-    depends_on:
-      - keycloak
-      - server
-    networks:
-      - camp-esprit-network
-
-  mail-dev:
-    container_name: camp-esprit-mail-dev
-    image: maildev/maildev
-    ports:
-      - "1080:1080"
-      - "1025:1025"
     networks:
       - camp-esprit-network
 
@@ -96,6 +60,18 @@ services:
       - mysql-backend
     volumes:
       - ./db-sync:/var/log
+    networks:
+      - camp-esprit-network
+  server:
+    container_name: camp-esprit-server
+    image: camp-esprit-server
+    build:
+      context: ./camp-esprit-server
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    depends_on:
+      - keycloak
     networks:
       - camp-esprit-network
 
