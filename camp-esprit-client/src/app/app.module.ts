@@ -45,8 +45,7 @@ import { CountVerifiedEmailsComponent } from './components/charts/count-verified
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    NgApexchartsModule
-  ],
+  ],  
   providers: [
     KeycloakService,
     {
