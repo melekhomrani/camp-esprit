@@ -17,7 +17,7 @@ USER 1000000
 
 WORKDIR /app
 
-EXPOSE 8080
+EXPOSE 8070
 
 COPY --from=builder /app/sync /app/sync
 
