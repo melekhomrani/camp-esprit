@@ -15,4 +15,7 @@
   <button *ngIf="isLogged" class="btn logout-btn d-flex justify-content-center align-items-center" type="submit" (click)="logout()">
     {{"Logout"}} <i class="fas fa-sign-out-alt ms-2"></i>
   </button>
+  <button *ngIf="!isLogged" class="btn logout-btn d-flex justify-content-center align-items-center" type="submit" (click)="login()">
+    {{"Login"}} <i class="fas fa-sign-out-alt ms-2"></i>
+  </button>
 </div>

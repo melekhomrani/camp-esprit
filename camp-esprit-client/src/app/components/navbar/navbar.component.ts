@@ -31,4 +31,8 @@ export class NavbarComponent {
     this.keycloakService.logout();
   }
 
+  login(): void {
+    this.keycloakService.login();
+  }
+
 }
