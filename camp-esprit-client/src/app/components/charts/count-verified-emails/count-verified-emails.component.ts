@@ -40,18 +40,18 @@ export class CountVerifiedEmailsComponent implements OnChanges {
               ],
             }]
           },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              },
-              x: {
-                grid: {
-                  offset: true
-                }
-              }
-            },
-          }
+          // options: {
+          //   scales: {
+          //     y: {
+          //       beginAtZero: true
+          //     },
+          //     x: {
+          //       grid: {
+          //         offset: true
+          //       }
+          //     }
+          //   },
+          // }
         });
       }
     }
