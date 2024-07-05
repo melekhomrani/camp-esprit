@@ -1,6 +1,5 @@
 package tn.esprit.campesprit;
 
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -8,7 +7,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.campesprit.entities.ForumThread;
-import tn.esprit.campesprit.services.iservices.ForumThreadSvc;
+import tn.esprit.campesprit.services.ForumThreadSvc;
 
 import java.util.List;
 

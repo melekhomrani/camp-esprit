@@ -1,8 +1,0 @@
-<div class="container p-4">
-  <app-post-thread (newThread)="addThread($event)"></app-post-thread>
-  <div *ngFor="let thread of threads">
-    <app-thread [thread]="thread"></app-thread>
-  </div>
-
-</div>
-

@@ -1,4 +1,4 @@
-package tn.esprit.campesprit.services.iservices;
+package tn.esprit.campesprit.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
