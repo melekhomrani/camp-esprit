@@ -53,6 +53,13 @@
 }
 
 .logout-btn{
+  background-color: rgb(255, 3, 3);
+  color: white;
+  padding-bottom: 10px;
+}
+
+
+.login-btn{
   background-color: rgb(53, 3, 255);
   color: white;
   padding-bottom: 10px;
