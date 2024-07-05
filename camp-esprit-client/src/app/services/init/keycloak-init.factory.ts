@@ -12,7 +12,7 @@ export function initializeKeycloak(keycloak: KeycloakService) {
       enableBearerInterceptor: true,
       bearerPrefix: 'Bearer',
       initOptions: {
-        onLoad: 'login-required',
+        onLoad: 'check-sso',
         checkLoginIframe: false,
       },
     });
