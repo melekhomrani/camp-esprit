@@ -21,7 +21,6 @@ public class TestController {
         return "Hello World for ALl";
     }
     @GetMapping("/user")
-    @PreAuthorize("hasRole('ROLE_USER')")
     public String forUser() {
         log.info("Test endpoint accessed");
         return "Hello World for ROLE_USER";
@@ -34,7 +33,7 @@ public class TestController {
     }
 
     @GetMapping("/user-admin")
-    @PreAuthorize("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String forUserAdmin() {
         log.info("Test endpoint accessed");
         return "Hello World for ROLE_USER or ROLE_ADMIN";
@@ -45,26 +44,4 @@ public class TestController {
         return String.format("Hello, %s!", jwt.getClaims());
     }
 
-    @Autowired
-    private ForumThreadSvc forumThreadSvc;
-
-    // Endpoint to get all threads
-    @GetMapping("/threads")
-    public List<ForumThread> getAllThreads() {
-        return forumThreadSvc.getAllThreads();
-    }
-
-    // Endpoint to create a new thread
-    @PostMapping("/create/thread")
-    public ForumThread createThread(
-            @RequestParam String title,
-            @RequestParam String content,
-            @RequestParam String userId,
-            @RequestParam List<Long> tagIds) {
-
-        ForumThread forumThread = new ForumThread();
-        forumThread.setTitle(title);
-        forumThread.setContent(content);
-        return forumThreadSvc.createThread(forumThread, userId, tagIds);
-    }
 }
