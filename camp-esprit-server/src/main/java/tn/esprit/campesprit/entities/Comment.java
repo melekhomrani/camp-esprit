@@ -23,6 +23,6 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "thread_id", referencedColumnName = "id")
-    private Thread thread;
+    private ForumThread thread;
 
 }

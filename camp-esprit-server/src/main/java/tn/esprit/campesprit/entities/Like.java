@@ -5,13 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.bouncycastle.jcajce.provider.symmetric.GOST28147;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "ThreadLike")
+
 public class Like {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +23,6 @@ public class Like {
 
     @ManyToOne
     @JoinColumn(name = "thread_id", referencedColumnName = "id")
-    private Thread thread;
+    private ForumThread thread;
 
 }
