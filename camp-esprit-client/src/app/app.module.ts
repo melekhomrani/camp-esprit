@@ -14,7 +14,6 @@ import { MapComponent } from './pages/map/map.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { StatisticsComponent } from './pages/statistics/statistics.component';
-import { NgApexchartsModule } from 'ng-apexcharts';
 import { CountCredsByTypeComponent } from './components/charts/count-creds-by-type/count-creds-by-type.component';
 import { CountEventsByTypeComponent } from './components/charts/count-events-by-type/count-events-by-type.component';
 import { CountEventsByUseridComponent } from './components/charts/count-events-by-userid/count-events-by-userid.component';
@@ -45,7 +44,7 @@ import { CountVerifiedEmailsComponent } from './components/charts/count-verified
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-  ],  
+  ],
   providers: [
     KeycloakService,
     {

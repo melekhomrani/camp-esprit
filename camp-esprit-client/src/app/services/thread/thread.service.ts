@@ -19,7 +19,7 @@ export class ThreadService {
 
   likeThread(id: number) {
     const currentThreads = this.threads.getValue();
-    const updatedThreads = currentThreads.map(thread => {
+    const updatedThreads = currentThreads.map((thread: Thread) => {
       if (thread.id === id) {
         return { ...thread, likes: thread.likes + 1 };
       }
@@ -30,7 +30,7 @@ export class ThreadService {
 
   addComment(threadId: number, comment: Comment) {
     const currentThreads = this.threads.getValue();
-    const updatedThreads = currentThreads.map(thread => {
+    const updatedThreads = currentThreads.map((thread: Thread) => {
       if (thread.id === threadId) {
         return { ...thread, comments: [...thread.comments, comment] };
       }

@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tn.esprit.campesprit.entities.User;
 import tn.esprit.campesprit.services.UserSvc;
 
@@ -27,5 +24,10 @@ public class UserCtrl {
         var user = userService.getByUSERNAME(username);
         log.info("User {} accessed his infos", user);
         return user;
+    }
+
+    @GetMapping("/user/{username}")
+    public User getUserByUsername(@PathVariable String username){
+        return userService.getByUSERNAME(username);
     }
 }

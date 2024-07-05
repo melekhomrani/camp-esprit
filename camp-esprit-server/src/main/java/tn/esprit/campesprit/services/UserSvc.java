@@ -21,4 +21,8 @@ public class UserSvc implements UserIService {
     public User getByUSERNAME(String username) {
         return userRepository.getByUsername(username);
     }
+
+    public User getUserById(String id){
+        return userRepository.getById(id);
+    }
 }

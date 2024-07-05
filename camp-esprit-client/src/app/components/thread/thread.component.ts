@@ -14,6 +14,7 @@ export class ThreadComponent {
   @Input() thread: any;
 
   newComment: string = '';
+  hasLiked: boolean = false; // Flag to track if the user has liked the thread
 
   postComment(): void {
     if (this.newComment.trim()) {
@@ -27,6 +28,9 @@ export class ThreadComponent {
   }
 
   likeThread(): void {
-    this.thread.likes++;
+    if (!this.hasLiked) { // Check if the user has already liked the thread
+      this.thread.likes++;
+      this.hasLiked = true; // Set the flag to true after liking
+    }
   }
 }

@@ -1,3 +1,6 @@
+* {
+  color: #3500ff;
+}
 .row {
   margin: 0;
   flex-wrap: wrap;
@@ -6,14 +9,21 @@
   flex-direction: row;
 }
 .row > * {
-  height: 40rem;
+  /* height: 40rem; */
+  gap: 3rem;
   width: fit-content;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border: 1px solid #f8f9fa;
+}
+
+h3 {
+  width: 100%;
+  margin-top: 2rem;
+  margin-left: 2rem;
 }

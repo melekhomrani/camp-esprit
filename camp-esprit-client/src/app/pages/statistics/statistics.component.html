@@ -1,15 +1,22 @@
-<h1>hello</h1>
-<div class="row justify-content-center align-items-center g-2">
-  <div>
-    <app-count-creds-by-type [data]="this.credsByType"></app-count-creds-by-type>
-  </div>
-  <div>
-    <app-count-events-by-type [data]="this.countEventsByType"></app-count-events-by-type>
-  </div>
-  <div>
-    <app-count-verified-emails [data]="this.countVerifiedEmails"></app-count-verified-emails>
-  </div>
-  <div>
-    <app-count-events-by-type-second [data]="this.countEventsByType"></app-count-events-by-type-second>
+<div class="p-4">
+  <h1>Statistics: </h1>
+  <div style="height: 3rem;"></div>
+  <div class="row justify-content-center align-items-center g-2 pb-5">
+    <div style="padding:0rem 3rem  3rem 3rem;">
+      <h3 style="margin-left: -2rem"> Types of Credentials:</h3>
+      <app-count-creds-by-type [data]="this.credsByType"></app-count-creds-by-type>
+    </div>
+    <div style="padding-bottom: 3rem;">
+      <h3>Types Of Events:</h3>
+      <app-count-events-by-type [data]="this.countEventsByType"></app-count-events-by-type>
+    </div>
+    <div style="padding:0rem 3rem  3rem 3rem;">
+      <h3 style="margin-left: -2rem">Verified Emails: </h3>
+      <app-count-verified-emails [data]="this.countVerifiedEmails"></app-count-verified-emails>
+    </div>
+    <div style="padding:0rem 3rem  3rem 3rem;">
+      <h3 style="margin-left: -2rem"> Events By Type:</h3>
+      <app-count-events-by-type-second [data]="this.countEventsByType"></app-count-events-by-type-second>
+    </div>
   </div>
 </div>
