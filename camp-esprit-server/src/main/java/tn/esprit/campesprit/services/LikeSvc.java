@@ -30,8 +30,15 @@ public class LikeSvc {
             likeRepo.save(like);
         }
     }
-
+    public void unlikeThread(String userId, Long threadId) {
+        Like like = likeRepo.findByUserIdAndThread_Id(userId, threadId)
+                .orElseThrow(() -> new IllegalArgumentException("Like not found"));
+        likeRepo.delete(like);
+    }
     public int countLikesByThreadId(Long threadId) {
         return likeRepo.findByThreadId(threadId).size();
+    }
+    public boolean hasLikedThread(String userId, Long threadId) {
+        return likeRepo.existsByUserIdAndThreadId(userId, threadId);
     }
 }
