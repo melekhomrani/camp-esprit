@@ -1,4 +1,7 @@
+// src/app/models/comment.model.ts
 export interface Comment {
-  user: string;
+  id: number;
   content: string;
+  userId: string;
+  threadId: number;
 }
