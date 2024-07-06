@@ -1,0 +1,37 @@
+package tn.esprit.campesprit.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import tn.esprit.campesprit.entities.ForumThread;
+import tn.esprit.campesprit.entities.Like;
+import tn.esprit.campesprit.repositories.LikeRepo;
+import tn.esprit.campesprit.repositories.ForumThreadRepo;
+import java.util.List;
+
+@Service
+public class LikeSvc {
+
+    @Autowired
+    private LikeRepo likeRepo;
+
+    @Autowired
+    private ForumThreadRepo forumThreadRepo;
+
+    public List<Like> getLikesByThreadId(Long threadId) {
+        return likeRepo.findByThreadId(threadId);
+    }
+
+    public void likeThread(String userId, Long threadId) {
+        if (!likeRepo.existsByUserIdAndThreadId(userId, threadId)) {
+            Like like = new Like();
+            like.setUserId(userId);
+            ForumThread thread = forumThreadRepo.findById(threadId).orElseThrow(() -> new IllegalArgumentException("Thread not found"));
+            like.setThread(thread);
+            likeRepo.save(like);
+        }
+    }
+
+    public int countLikesByThreadId(Long threadId) {
+        return likeRepo.findByThreadId(threadId).size();
+    }
+}
