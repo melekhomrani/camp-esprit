@@ -19,6 +19,7 @@ import { CountEventsByTypeComponent } from './components/charts/count-events-by-
 import { CountEventsByUseridComponent } from './components/charts/count-events-by-userid/count-events-by-userid.component';
 import { CountEventsByTypeSecondComponent } from './components/charts/count-events-by-type-second/count-events-by-type-second.component';
 import { CountVerifiedEmailsComponent } from './components/charts/count-verified-emails/count-verified-emails.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { CountVerifiedEmailsComponent } from './components/charts/count-verified
     CountEventsByUseridComponent,
     CountEventsByTypeSecondComponent,
     CountVerifiedEmailsComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,
