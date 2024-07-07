@@ -73,8 +73,6 @@ export class ThreadComponent implements OnInit {
         }
     }
 
-
-
     unlikeThread(): void {
         if (this.userId) {
             this.threadService.unlikeThread(this.userId, this.thread.id).subscribe(() => {
@@ -87,6 +85,7 @@ export class ThreadComponent implements OnInit {
             console.error('User ID not loaded.');
         }
     }
+
 
     toggleComments(): void {
         if (this.showComments) {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ForumThread } from '../../models/Thread';
 
@@ -29,11 +29,11 @@ export class ThreadService {
   }
 
 
-  unlikeThread(userId: string, threadId: number): Observable<void> {
-    const params = { userId }; // Construct the query parameter object
+    unlikeThread(userId: string, threadId: number): Observable<void> {
+        const params = new HttpParams().set('userId', userId); // Construct the query parameter object
 
-    return this.http.post<void>(`${this.apiUrl}/likes/unlike/${threadId}`, null, { params });
-  }
+        return this.http.delete<void>(`${this.apiUrl}/likes/unlike/${threadId}`, { params });
+    }
 
 
     hasLiked(userId: string, threadId: number): Observable<boolean> {
