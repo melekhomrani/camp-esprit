@@ -8,7 +8,7 @@ import tn.esprit.campesprit.services.ForumThreadSvc;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api")
 public class ThreadController {
     @Autowired
     private ForumThreadSvc forumThreadSvc;

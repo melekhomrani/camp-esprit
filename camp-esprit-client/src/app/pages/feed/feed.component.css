@@ -1,0 +1,34 @@
+/* src/app/components/feed/feed.component.css */
+.feed-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.welcome-header {
+  font-size: 48px;
+  font-weight: bold;
+  color: #545BFF;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px #F5F3F3;
+  border: 2px solid #545BFF;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #F5F3F3;
+}
+
+.threads-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.thread-wrapper {
+  width: 100%;
+  max-width: 800px; /* Adjust the width as necessary */
+  margin-bottom: 20px;
+}

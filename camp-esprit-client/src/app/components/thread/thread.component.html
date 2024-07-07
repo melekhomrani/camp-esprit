@@ -1,0 +1,26 @@
+<div class="thread-card">
+  <div class="card-header">
+    <div class="avatar">{{ thread.createdBy.username[0] }}</div>
+    <div class="ml-2">{{ thread.createdBy.username }}</div>
+  </div>
+  <div class="card-body">
+    <h3>{{ thread.title }}</h3>
+    <p>{{ thread.content }}</p>
+    <div class="tags">
+      <span *ngFor="let tag of thread.tags" class="tag">{{ tag.name }}</span>
+    </div>
+    <div class="like-section">
+      <span class="like-count">👍: {{ likesCount }}</span>
+      <span class="comment-count" (click)="toggleComments()">💬: {{ commentsCount }}</span>
+    </div>
+    <div class="like-button-container">
+      <button class="like-button" (click)="toggleLike()">
+        <span *ngIf="liked; else notLiked">Unlike</span>
+        <ng-template #notLiked>Like</ng-template>
+      </button>
+    </div>
+    <div class="comments-section" *ngIf="showComments">
+      <app-comment *ngFor="let comment of comments" [commentUsername]="comment.userId" [commentContent]="comment.content"></app-comment>
+    </div>
+  </div>
+</div>

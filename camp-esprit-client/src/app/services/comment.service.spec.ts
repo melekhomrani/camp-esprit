@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { KeycloakOperationService} from "./keycloak.service";
+import { CommentService } from './comment.service';
 
-describe('KeycloakService', () => {
-  let service: KeycloakOperationService;
+describe('CommentService', () => {
+  let service: CommentService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(KeycloakOperationService);
+    service = TestBed.inject(CommentService);
   });
 
   it('should be created', () => {

@@ -1,0 +1,83 @@
+.thread-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #545BFF;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 20px;
+}
+
+.ml-2 {
+  margin-left: 8px;
+}
+
+.card-body {
+  margin-bottom: 10px;
+}
+
+.tags {
+  margin-top: 10px;
+}
+
+.tag {
+  background-color: #F5F3F3;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.like-section {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row; /* Changed from column to row */
+  align-items: center; /* Centered items horizontally */
+}
+
+.like-section span {
+  margin-bottom: 5px;
+}
+
+.like-section .like-count,
+.like-section .comment-count {
+  margin-right: 10px;
+  cursor: pointer; /* Added to indicate clickability */
+}
+
+.like-button-container {
+  margin-top: 10px;
+  width: 100%; /* Ensure button spans the full width */
+}
+
+.like-button {
+  background-color: #545BFF;
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%; /* Ensure button spans the full width */
+}
+
+.like-button:hover {
+  background-color: #3c44d3;
+}

@@ -1,0 +1,11 @@
+<!-- src/app/components/feed/feed.component.html -->
+<div class="welcome-header">
+  WELCOME TO ESPRIT CAMP FEED
+</div>
+<div class="feed-container">
+  <div class="threads-container">
+    <div *ngFor="let thread of threads" class="thread-wrapper">
+      <app-thread [thread]="thread"></app-thread>
+    </div>
+  </div>
+</div>
