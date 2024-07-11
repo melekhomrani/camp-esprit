@@ -1,3 +1,4 @@
+<!-- src/app/components/thread/thread.component.html -->
 <div class="thread-card">
   <div class="card-header">
     <div class="avatar">{{ thread.createdBy.username[0] }}</div>
@@ -19,8 +20,8 @@
         <ng-template #notLiked>Like</ng-template>
       </button>
     </div>
-    <div class="comments-section" *ngIf="showComments">
-      <app-comment *ngFor="let comment of comments" [commentUsername]="comment.userId" [commentContent]="comment.content"></app-comment>
+    <div *ngIf="showComments">
+      <app-comment [threadId]="thread.id"></app-comment>
     </div>
   </div>
 </div>

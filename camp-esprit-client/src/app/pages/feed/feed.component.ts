@@ -1,6 +1,7 @@
+// src/app/components/feed/feed.component.ts
 import { Component, OnInit } from '@angular/core';
-import { ThreadService } from "../../services/thread/thread.service";
-import { ForumThread } from "../../models/Thread";
+import { ThreadService } from '../../services/thread/thread.service';
+import { ForumThread } from '../../models/Thread';
 
 @Component({
   selector: 'app-feed',
@@ -13,9 +14,14 @@ export class FeedComponent implements OnInit {
   constructor(private threadService: ThreadService) { }
 
   ngOnInit(): void {
-    this.threadService.getThreads().subscribe((data) => {
-      this.threads = data;
-      console.log(this.threads);  // Add this line to check the data
+    this.loadThreads();
+  }
+
+  loadThreads(): void {
+    this.threadService.getThreads().subscribe(threads => {
+      this.threads = threads;
+    }, error => {
+      console.error('Error loading threads:', error);
     });
   }
 }

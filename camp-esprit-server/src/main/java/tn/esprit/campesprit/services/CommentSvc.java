@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.campesprit.entities.Comment;
 import tn.esprit.campesprit.entities.ForumThread;
+import tn.esprit.campesprit.entities.User;
 import tn.esprit.campesprit.repositories.CommentRepo;
 import tn.esprit.campesprit.repositories.ForumThreadRepo;
+import tn.esprit.campesprit.repositories.UserRepo;
 
 import java.util.List;
 
@@ -18,6 +20,9 @@ public class CommentSvc {
     @Autowired
     private ForumThreadRepo forumThreadRepo;
 
+    @Autowired
+    private UserRepo userRepo;
+
     public List<Comment> getCommentsByThreadId(Long threadId) {
         return commentRepo.findByThreadId(threadId);
     }
@@ -27,11 +32,14 @@ public class CommentSvc {
     }
 
     public Comment addComment(Long threadId, String userId, String content) {
-        ForumThread thread = forumThreadRepo.findById(threadId).orElseThrow(() -> new IllegalArgumentException("Thread not found"));
+        ForumThread thread = forumThreadRepo.findById(threadId).orElseThrow(() -> new RuntimeException("Thread not found"));
+        User user = userRepo.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+
         Comment comment = new Comment();
-        comment.setThread(thread);
-        comment.setUserId(userId);
         comment.setContent(content);
+        comment.setThread(thread);
+        comment.setCommentedBy(user);
+
         return commentRepo.save(comment);
     }
 

@@ -1,0 +1,9 @@
+/* src/app/comment/comment.component.css */
+.comment {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.comment p {
+    margin: 0;
+}

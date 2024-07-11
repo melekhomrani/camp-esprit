@@ -1,5 +1,7 @@
-// src/app/components/comment/comment.component.ts
-import { Component, Input, OnInit } from '@angular/core';
+// src/app/comment/comment.component.ts
+import { Component, OnInit, Input } from '@angular/core';
+import {CommentService} from "../../services/comment.service";
+import {Comment} from "../../models/Comment";
 
 @Component({
   selector: 'app-comment',
@@ -7,10 +9,23 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./comment.component.css']
 })
 export class CommentComponent implements OnInit {
-  @Input() commentUsername!: string;
-  @Input() commentContent!: string;
+  @Input() threadId!: number;
+  comments: Comment[] = [];
 
-  constructor() { }
+  constructor(private commentService: CommentService) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.loadComments();
+  }
+
+  loadComments(): void {
+    this.commentService.getComments(this.threadId).subscribe(
+        (data) => {
+          this.comments = data;
+        },
+        (error) => {
+          console.error('Error loading comments', error);
+        }
+    );
+  }
 }

@@ -16,9 +16,9 @@ export class ThreadComponent implements OnInit {
     likesCount!: number;
     commentsCount!: number;
     userId!: string;
-    comments: Comment[] = [];
-    showComments = false;
     liked = false;
+    showComments = false;
+    comments: Comment[] = [];
 
     constructor(
         private threadService: ThreadService,
@@ -86,11 +86,9 @@ export class ThreadComponent implements OnInit {
         }
     }
 
-
     toggleComments(): void {
+        this.showComments = !this.showComments;
         if (this.showComments) {
-            this.showComments = false;
-        } else {
             this.loadComments();
         }
     }
@@ -98,7 +96,6 @@ export class ThreadComponent implements OnInit {
     loadComments(): void {
         this.commentService.getComments(this.thread.id).subscribe(comments => {
             this.comments = comments;
-            this.showComments = true;
         }, error => {
             console.error('Error loading comments:', error);
         });

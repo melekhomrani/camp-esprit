@@ -24,8 +24,8 @@ public class CommentController {
         return commentSvc.countCommentsByThreadId(threadId);
     }
 
-    @PostMapping("/thread/{threadId}")
-    public Comment addComment(@PathVariable Long threadId, @RequestParam String userId, @RequestParam String content) {
+    @PostMapping("/add{threadId}/{userId}")
+        public Comment addComment(@RequestParam Long threadId, @RequestParam String userId, @RequestBody String content) {
         return commentSvc.addComment(threadId, userId, content);
     }
 

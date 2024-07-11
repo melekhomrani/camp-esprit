@@ -18,8 +18,9 @@ public class Comment {
 
     private String content;
 
-    @Column(name = "user_id")  // Foreign key to User
-    private String userId;
+    @ManyToOne
+    @JoinColumn(name = "created_by_id", referencedColumnName = "id")
+    private User commentedBy;
 
     @ManyToOne
     @JoinColumn(name = "thread_id", referencedColumnName = "id")

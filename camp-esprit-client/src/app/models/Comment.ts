@@ -2,6 +2,9 @@
 export interface Comment {
   id: number;
   content: string;
-  userId: string;
+  commentedBy: {
+    id: number;
+    username: string;
+  };
   threadId: number;
 }
