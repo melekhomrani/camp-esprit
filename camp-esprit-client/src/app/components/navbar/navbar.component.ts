@@ -11,7 +11,7 @@ export class NavbarComponent {
   currentRoute: string = '';
 
   username = this.keycloakService._profile?.username;
-
+  isLogged = this.keycloakService.isLoggedIn();
   isAdmin = this.keycloakService.hasRole('admin');
 
   constructor(private keycloakService: KeycloakOperationService, private router: Router) {
@@ -29,6 +29,10 @@ export class NavbarComponent {
 
   logout(): void {
     this.keycloakService.logout();
+  }
+
+  login(): void {
+    this.keycloakService.login();
   }
 
 }

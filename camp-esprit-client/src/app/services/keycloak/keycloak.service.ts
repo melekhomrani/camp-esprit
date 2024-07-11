@@ -12,6 +12,11 @@ export class KeycloakOperationService {
   isLoggedIn(): boolean {
     return this.keycloak.isLoggedIn();
   }
+
+  login() {
+    this.keycloak.login();
+  }
+
   logout(): void {
     this.keycloak.logout();
   }
