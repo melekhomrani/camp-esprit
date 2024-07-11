@@ -1,0 +1,34 @@
+.chat-container {
+  height: 100vh;
+}
+
+.chat-header {
+  background-color: #007bff;
+  color: white;
+}
+
+.chat-messages {
+  background-color: #e9ecef;
+  border: 1px solid #dee2e6;
+  border-top: none;
+}
+
+.chat-message {
+  background-color: #ffffff;
+  color: #007bff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+}
+
+.chat-message.bg-primary {
+  background-color: #007bff !important;
+  color: white !important;
+}
+
+.chat-message.bg-light {
+  background-color: #f8f9fa !important;
+}
+
+.chat-input {
+  background-color: #f8f9fa;
+}

@@ -1,0 +1,14 @@
+<div class="chat-container d-flex flex-column bg-light">
+  <div class="chat-header p-3 bg-primary text-white">
+    <h5 class="mb-0">Chat Room</h5>
+  </div>
+  <div class="chat-messages p-3 flex-grow-1 overflow-auto" id="chatMessages">
+    <div *ngFor="let msg of messages" class="chat-message my-2 p-2 rounded" [ngClass]="{'bg-primary text-white': msg.sender === sender, 'bg-light': msg.sender !== sender}">
+      <strong>{{ msg.sender }}: </strong>{{ msg.content }}
+    </div>
+  </div>
+  <div class="chat-input d-flex p-3 bg-white border-top">
+    <input [(ngModel)]="message" class="form-control me-2" placeholder="Type a message..." />
+    <button (click)="sendMessage()" class="btn btn-primary">Send</button>
+  </div>
+</div>
