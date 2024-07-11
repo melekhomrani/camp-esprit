@@ -21,7 +21,9 @@
       </button>
     </div>
     <div *ngIf="showComments">
-      <app-comment [threadId]="thread.id"></app-comment>
+      <div class="comments-section">
+        <app-comment [threadId]="thread.id"></app-comment>
+      </div>
     </div>
   </div>
 </div>

@@ -1,7 +1,10 @@
 <!-- src/app/comment/comment.component.html -->
 <div *ngIf="comments.length > 0; else noComments">
   <div *ngFor="let comment of comments" class="comment">
-    <p><strong>{{ comment.commentedBy.username }}:</strong> {{ comment.content }}</p>
+    <div class="comment-header">
+      <div class="avatar-small">{{ comment.commentedBy.username[0] }}</div>
+      <p><strong>{{ comment.commentedBy.username }}:</strong> {{ comment.content }}</p>
+    </div>
   </div>
 </div>
 <ng-template #noComments>

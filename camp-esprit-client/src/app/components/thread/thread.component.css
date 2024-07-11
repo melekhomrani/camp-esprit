@@ -1,3 +1,4 @@
+/* src/app/components/thread/thread.component.css */
 .thread-card {
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -48,14 +49,17 @@
 
 .like-section {
   margin-top: 10px;
+  margin-bottom: 10px; /* Add margin below the like section */
   display: flex;
-  flex-direction: row; /* Changed from column to row */
-  align-items: center; /* Centered items horizontally */
+  align-items: center;
 }
 
-.like-section span {
-  margin-bottom: 5px;
+.like-button-container {
+  margin-top: 10px;
+  margin-bottom: 10px; /* Add margin below the like button container */
+  width: 100%;
 }
+
 
 .like-section .like-count,
 .like-section .comment-count {
@@ -72,12 +76,14 @@
   background-color: #545BFF;
   color: white;
   border: none;
-  padding: 5px 20px;
+  padding: 8px 16px;
   border-radius: 5px;
   cursor: pointer;
   width: 100%; /* Ensure button spans the full width */
+  text-align: center; /* Center button text */
+  transition: background-color 0.3s ease; /* Smooth hover transition */
 }
 
 .like-button:hover {
-  background-color: #3c44d3;
+  background-color: #3c44d3; /* Darker shade on hover */
 }
