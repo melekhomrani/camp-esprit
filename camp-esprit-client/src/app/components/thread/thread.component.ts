@@ -100,4 +100,8 @@ export class ThreadComponent implements OnInit {
             console.error('Error loading comments:', error);
         });
     }
+    refreshComments(): void {
+        this.getCommentsCount(); // Reload comments count
+        // Optionally, update comments list if needed
+    }
 }

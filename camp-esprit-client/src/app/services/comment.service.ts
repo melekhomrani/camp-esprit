@@ -1,3 +1,4 @@
+// src/app/services/comment.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -20,7 +21,10 @@ export class CommentService {
   }
 
   addComment(threadId: number, userId: string, content: string): Observable<Comment> {
-    return this.http.post<Comment>(`${this.apiUrl}/thread/${threadId}`, { userId, content });
+    const url = `${this.apiUrl}/add/${threadId}/${userId}`;
+    return this.http.post<Comment>(url, content, {
+      headers: { 'Content-Type': 'text/plain' }  // Set Content-Type as text/plain
+    });
   }
 
   deleteComment(commentId: number): Observable<void> {
