@@ -5,15 +5,23 @@ import { AuthGuard } from './services/guard/auth.guard';
 import { FeedComponent } from "./pages/feed/feed.component";
 import { MapComponent } from "./pages/map/map.component";
 import { StatisticsComponent } from './pages/statistics/statistics.component';
+import {ChatRoomComponent} from "./pages/chatroom/chatroom.component";
+import {ChatRoomListComponent} from "./pages/chatroom-list/chatroom-list.component";
 
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: 'feed', component: FeedComponent,
+    canActivate: [AuthGuard],
+  },{
+    path: 'chatroom/:id', component: ChatRoomComponent,
+    canActivate: [AuthGuard],
+  },{
+    path: 'chatlist', component: ChatRoomListComponent,
     canActivate: [AuthGuard],
   },
   {
