@@ -1,5 +1,4 @@
 export interface Event {
-  id: number;
   description: string;
   lat: number;
   lng: number;

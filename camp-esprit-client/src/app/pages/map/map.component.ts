@@ -13,9 +13,10 @@ declare var bootstrap: any;
 })
 export class MapComponent implements OnInit {
   private map: L.Map | undefined;
+  private defaultZoom = 12;
+  private currentPositionMarker: L.Marker | undefined;
 
   newEvent: Event = {
-    id:0,
     description: '',
     lat: 0,
     lng: 0,
@@ -23,20 +24,22 @@ export class MapComponent implements OnInit {
     userId: this.keycloak.getUsername(),
     participants: [],
   };
-  showForm: boolean = false; // Property to toggle form visibility
+  showForm: boolean = false;
 
   constructor(private mapService: MapService, private keycloak: KeycloakService) {}
 
   ngOnInit(): void {
     this.initMap();
     this.loadEvents();
+    this.getCurrentPosition();
   }
 
   private initMap(): void {
-    const tunisCoordinates: L.LatLngExpression = [36.8065, 10.1815];
+    // Default center for the map
+    const defaultCoordinates: L.LatLngExpression = [36.8065, 10.1815];
     this.map = L.map('map', {
-      center: tunisCoordinates,
-      zoom: 12,
+      center: defaultCoordinates,
+      zoom: this.defaultZoom,
     });
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -74,60 +77,48 @@ export class MapComponent implements OnInit {
               <div style="background-color: #ffffff; color: #1b39c9; padding: 10px;">
                 <h4>${event.description}</h4>
                 <p>Date: ${event.event_date}</p>
-                <p>Creator: ${user.username}</p>
-                <button class="btn btn-primary btn-sm mt-2 send-message" data-event-id="${event.id}">Send Message</button>
-                ${this.canEditEvent(event.userId) ? `<button class="btn btn-secondary btn-sm mt-2 edit-event" data-event-id="${event.id}">Edit</button>` : ''}
+                <p>Creator: ${user.username}
+                <button class="btn btn-primary btn-sm mt-2 send-message" data-event-id="${event.userId}">Send Message</button>
+                ${this.canEditEvent(event.userId) ? `<button class="btn btn-secondary btn-sm mt-2 edit-event" data-event-id="${event.userId}">Edit</button>` : ''}
               </div>
             `;
             marker.bindPopup(popupContent);
-
-            // Add event listener for Send Message button
-            // const sendMessageButton = marker.getPopup().getContent().querySelector('.send-message');
-            // if (sendMessageButton) {
-            //   sendMessageButton.addEventListener('click', () => {
-            //     this.sendMessage(event.userId);
-            //   });
-            // }
-
-            // Add event listener for Edit button
-            // const editEventButton = marker.getPopup().getContent().querySelector('.edit-event');
-            // if (editEventButton) {
-            //   editEventButton.addEventListener('click', () => {
-            //     this.editEvent(event);
-            //   });
-            // }
           },
           (error) => {
             console.error('Error fetching event creator:', error);
-            const popupContent = `
-              <div style="background-color: #ffffff; color: #1b39c9; padding: 10px;">
-                <h4>${event.description}</h4>
-                <p>Date: ${event.event_date}</p>
-                <p>Creator: ${event.userId}</p>
-                <button class="btn btn-primary btn-sm mt-2 send-message" data-event-id="${event.id}">Send Message</button>
-                ${this.canEditEvent(event.userId) ? `<button class="btn btn-secondary btn-sm mt-2 edit-event" data-event-id="${event.id}">Edit</button>` : ''}
-              </div>
-            `;
-            marker.bindPopup(popupContent);
-
-            // Add event listener for Send Message button
-            // const sendMessageButton = marker.getPopup().getContent().querySelector('.send-message');
-            // if (sendMessageButton) {
-            //   sendMessageButton.addEventListener('click', () => {
-            //     this.sendMessage(event.userId);
-            //   });
-            // }
-
-            // Add event listener for Edit button
-            // const editEventButton = marker.getPopup().getContent().querySelector('.edit-event');
-            // if (editEventButton) {
-            //   editEventButton.addEventListener('click', () => {
-            //     this.editEvent(event);
-            //   });
-            // }
           }
         );
       });
+    }
+  }
+
+  getCurrentPosition(): void {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          this.newEvent.lat = latitude;
+          this.newEvent.lng = longitude;
+          this.centerMapAt(latitude, longitude);
+        },
+        (error) => {
+          console.error('Error getting current position:', error);
+        }
+      );
+    } else {
+      console.error('Geolocation is not supported by this browser.');
+    }
+  }
+
+  centerMapAt(latitude: number, longitude: number): void {
+    if (this.map) {
+      this.map.setView([latitude, longitude], this.defaultZoom);
+      // Add marker for current position
+      if (this.currentPositionMarker) {
+        this.currentPositionMarker.setLatLng([latitude, longitude]);
+      } else {
+        this.currentPositionMarker = L.marker([latitude, longitude]).addTo(this.map!);
+      }
     }
   }
 
@@ -146,7 +137,6 @@ export class MapComponent implements OnInit {
     );
 
     this.newEvent = {
-      id:0,
       description: '',
       lat: 0,
       lng: 0,
@@ -161,7 +151,7 @@ export class MapComponent implements OnInit {
   }
 
   toggleForm(): void {
-    this.showForm = !this.showForm; // Toggle form visibility
+    this.showForm = !this.showForm;
   }
 
   canEditEvent(eventUserId: string): boolean {
@@ -170,14 +160,10 @@ export class MapComponent implements OnInit {
   }
 
   editEvent(event: Event): void {
-    // Implement logic to open edit form
     console.log('Editing event:', event);
-    // Example: Show edit form using Bootstrap modal or custom component
   }
 
   sendMessage(userId: string): void {
-    // Implement logic to send message to event creator
     console.log('Sending message to user:', userId);
-    // Example: Use a messaging service or API to send messages
   }
 }
