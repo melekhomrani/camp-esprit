@@ -21,7 +21,6 @@ import { CountEventsByTypeSecondComponent } from './components/charts/count-even
 import { CountVerifiedEmailsComponent } from './components/charts/count-verified-emails/count-verified-emails.component';
 import {ChatComponent} from "./pages/chat/chat.component";
 import {ChatRoomListComponent} from './pages/chatroom-list/chatroom-list.component';
-import {ChatRoomComponent} from "./pages/chatroom/chatroom.component";
 import { CampingStatsComponent } from './pages/camping-stats/camping-stats.component';
 import { EventsDashboardComponent } from './pages/events-dashboard/events-dashboard.component';
 
@@ -35,7 +34,7 @@ import { EventsDashboardComponent } from './pages/events-dashboard/events-dashbo
     FeedComponent,EventsDashboardComponent,
     CampingStatsComponent,
     ChatComponent,
-    ChatRoomListComponent,ChatRoomComponent,
+    ChatRoomListComponent,
     ThreadComponent,
     PostThreadComponent,
     MapComponent,

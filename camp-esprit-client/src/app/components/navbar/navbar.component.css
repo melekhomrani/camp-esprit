@@ -34,12 +34,12 @@
 
 .nav-link.inactive {
   opacity: 0.5;
-  color:#545BFF;
+  color:#ffffff;
 }
 
 .nav-link.active {
   opacity: 1;
-  color:#545BFF;
+  color:#ffffff;
 
 }
 
@@ -53,8 +53,9 @@
 }
 
 .logout-btn{
-  background-color: rgb(255, 3, 3);
-  color: white;
+  background-color: white;
+  color: #545BFF;
+
   padding-bottom: 10px;
 }
 

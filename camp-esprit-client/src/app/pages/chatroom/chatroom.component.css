@@ -1,26 +1,68 @@
-.chat-room {
-  padding: 20px;
-}
+section#chat-room{
+  .main-chat{
+    background-color: #F5F5F566;
+    .messages-area{
+      padding-top: 20px;
 
-.messages {
-  max-height: 400px;
-  overflow-y: auto;
-  background: linear-gradient(to bottom right, #4A148C, #3F51B5); /* Purple to blue gradient */
-  color: white;
-  padding: 10px;
-  border-radius: 10px;
-}
+      .msg{
+        margin-top: 10px;
+        & p {
+          padding: 7px 36px;
+          border-radius: 5px;
+          width: fit-content;
+          margin: 0;
+        }
+        &.send{
+          &p{
+            background-color: #2383552B;
+          }
+        }
+        &.receive{
+          direction: ltr;
+          &p{
+            background-color: #F3F3F3;
+          // float: left;
+          }
+          text-align: left;
+        }
+      }
+    }
+    .chat-list{
+      min-height: 350px;
+      overflow-y: auto;
+      border: 1px solid #CCCCCC;
 
-input {
-  width: 80%;
-  padding: 10px;
-  margin: 10px 0;
-}
-
-button {
-  padding: 10px;
-  background-color: #3F51B5; /* Blue */
-  color: white;
-  border: none;
-  border-radius: 5px;
+      &img{
+        width: 30px;
+      }
+      &span{
+        font-size: 10px;
+        color: #ABAAAA;
+      }
+      &table{
+       & tr{
+          cursor: pointer;
+          :hover{
+            background-color: #CCCCCC;
+          }
+        }
+      }
+    }
+    .messages-area{
+      height: 350px;
+    // min-height: 250px;
+      overflow-y: auto;
+    }
+    .send-row{
+    // position: absolute;
+      bottom: 0px;
+      width: 100%;
+      background-color: #EDEDED;
+      padding: 7px;
+      & textarea {
+        resize: none;
+        border-radius: 20px;
+      }
+    }
+  }
 }
