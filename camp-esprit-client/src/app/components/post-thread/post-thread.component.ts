@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { Tag } from "../../models/Tag";
 import { ThreadService} from "../../services/thread/thread.service";
 import { TagService } from "../../services/tag.service";
@@ -15,6 +15,9 @@ export class PostThreadComponent implements OnInit {
     title: string = '';
     content: string = '';
     userId: string = ''; // Assuming userId is obtained from authentication or another source
+    @Output() threadAdded = new EventEmitter<void>();
+
+
 
     constructor(private tagService: TagService, private threadService: ThreadService, private statisticsService: StatisticsService) { }
 
@@ -46,6 +49,7 @@ export class PostThreadComponent implements OnInit {
                     this.title = '';
                     this.content = '';
                     this.tags.forEach(tag => tag.selected = false);
+                    this.threadAdded.emit();
                 },
                 error => {
                     console.error('Error creating thread:', error);

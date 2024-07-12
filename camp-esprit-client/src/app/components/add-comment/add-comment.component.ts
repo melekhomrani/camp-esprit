@@ -1,5 +1,5 @@
 // src/app/components/add-comment/add-comment.component.ts
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { CommentService } from '../../services/comment.service';
 import { Comment } from '../../models/Comment';
 
@@ -11,6 +11,7 @@ import { Comment } from '../../models/Comment';
 export class AddCommentComponent {
     @Input() threadId!: number;
     @Input() userId!: string;
+    @Output() commentAdded: EventEmitter<void> = new EventEmitter<void>();
     content: string = '';
     showAddComment: boolean = false;
 
@@ -27,11 +28,13 @@ export class AddCommentComponent {
                     console.log('Comment added:', newComment);
                     this.content = ''; // Clear the textarea
                     this.showAddComment = false; // Hide the form
+                    this.commentAdded.emit();
                 },
                 (error) => {
                     console.error('Error adding comment:', error);
                 }
             );
         }
+
     }
 }

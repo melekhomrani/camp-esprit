@@ -43,4 +43,12 @@ public class ForumThreadSvc {
         // Save the forum thread
         return forumthreadRepo.save(forumThread);
     }
+    public List<ForumThread> getThreadsByUserId(String userId) {
+        // Implement logic to find threads by user ID
+        User user = new User();
+        user.setId(userId); // assuming User entity has setId method
+
+        return forumthreadRepo.findByCreatedBy(user);
+    }
+
 }

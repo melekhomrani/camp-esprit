@@ -1,0 +1,15 @@
+<div class="welcome-header">
+    MY THREADS
+</div>
+
+<div *ngIf="showPostThread">
+    <app-post-thread (threadAdded)="onThreadAdded()"></app-post-thread>
+</div>
+
+<div class="feed-container">
+    <div class="threads-container">
+        <div *ngFor="let thread of threads" class="thread-wrapper">
+            <app-thread [thread]="thread"></app-thread>
+        </div>
+    </div>
+</div>

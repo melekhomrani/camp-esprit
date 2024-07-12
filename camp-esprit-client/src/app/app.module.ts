@@ -21,6 +21,7 @@ import { CountEventsByTypeSecondComponent } from './components/charts/count-even
 import { CountVerifiedEmailsComponent } from './components/charts/count-verified-emails/count-verified-emails.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { AddCommentComponent } from './components/add-comment/add-comment.component';
+import { MyThreadsComponent } from './pages/my-threads/my-threads.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { AddCommentComponent } from './components/add-comment/add-comment.compon
     CountVerifiedEmailsComponent,
     CommentComponent,
     AddCommentComponent,
+    MyThreadsComponent,
   ],
   imports: [
     BrowserModule,

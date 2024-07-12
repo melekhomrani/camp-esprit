@@ -1,5 +1,5 @@
 // src/app/comment/comment.component.ts
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, SimpleChanges} from '@angular/core';
 import {CommentService} from "../../services/comment.service";
 import {Comment} from "../../models/Comment";
 
@@ -18,6 +18,12 @@ export class CommentComponent implements OnInit {
     this.loadComments();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['threadId'] && !changes['threadId'].firstChange) {
+      this.loadComments();
+    }
+  }
+
   loadComments(): void {
     this.commentService.getComments(this.threadId).subscribe(
         (data) => {
@@ -28,4 +34,5 @@ export class CommentComponent implements OnInit {
         }
     );
   }
+
 }

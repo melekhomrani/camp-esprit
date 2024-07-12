@@ -104,4 +104,6 @@ export class ThreadComponent implements OnInit {
         this.getCommentsCount(); // Reload comments count
         this.loadComments();
     }
+
+
 }

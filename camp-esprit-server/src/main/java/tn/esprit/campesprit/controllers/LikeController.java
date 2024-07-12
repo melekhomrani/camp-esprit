@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.campesprit.services.LikeSvc;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/likes")
 public class LikeController {
@@ -33,4 +35,10 @@ public class LikeController {
     public boolean hasLikedThread(@RequestParam String userId, @PathVariable Long threadId) {
         return likeSvc.hasLikedThread(userId, threadId);
     }
+
+    @GetMapping("/{UserId}")
+    public List<Long> getLikedThreadByUserId(@PathVariable String UserId) {
+        return likeSvc.getLikedThreadsByUserId(UserId);
+    }
 }
+

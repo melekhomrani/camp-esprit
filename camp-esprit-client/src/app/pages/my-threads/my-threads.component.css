@@ -1,0 +1,58 @@
+.feed-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.welcome-header {
+    font-size: 48px;
+    font-weight: bold;
+    color: #545BFF;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px #F5F3F3;
+    border: 2px solid #545BFF;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #F5F3F3;
+}
+
+.threads-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.thread-wrapper {
+    width: 100%;
+    max-width: 800px; /* Adjust the width as necessary */
+    margin-bottom: 20px;
+}
+.expander {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #545BFF; /* Change text color here */
+}
+
+.expander:hover {
+    background-color: #e0e0e0;
+}
+
+.expander span:first-child {
+    flex-grow: 1;
+}
+
+.expander span:last-child {
+    margin-left: 10px; /* Adjust as needed for spacing between text and icon */
+}

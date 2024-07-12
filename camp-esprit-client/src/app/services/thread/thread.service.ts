@@ -49,5 +49,8 @@ export class ThreadService {
 
         return this.http.post<ForumThread>(`${this.apiUrl}/create/thread`, null, { params });
     }
+    getThreadsByUser(userId: string): Observable<ForumThread[]> {
+        return this.http.get<ForumThread[]>(`${this.apiUrl}/${userId}`);
+    }
 
 }

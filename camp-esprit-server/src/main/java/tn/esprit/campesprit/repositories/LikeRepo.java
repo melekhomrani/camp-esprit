@@ -12,4 +12,6 @@ public interface LikeRepo extends JpaRepository<Like, Long> {
 
     Optional<Like> findByUserIdAndThread_Id(String userId, Long threadId);
 
+    List<Like> findByUserId(String userId);
+
 }

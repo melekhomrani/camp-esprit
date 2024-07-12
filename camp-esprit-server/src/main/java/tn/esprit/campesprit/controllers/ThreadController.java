@@ -3,6 +3,7 @@ package tn.esprit.campesprit.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.campesprit.entities.ForumThread;
+import tn.esprit.campesprit.entities.User;
 import tn.esprit.campesprit.services.ForumThreadSvc;
 
 import java.util.List;
@@ -32,4 +33,11 @@ public class ThreadController {
         forumThread.setContent(content);
         return forumThreadSvc.createThread(forumThread, userId, tagIds);
     }
+    @GetMapping("/{userId}")
+    public List<ForumThread> getThreadsByUser(@PathVariable String userId) {
+        return forumThreadSvc.getThreadsByUserId(userId);
+    }
+
+
+
 }

@@ -5,6 +5,7 @@ import { AuthGuard } from './services/guard/auth.guard';
 import { FeedComponent } from "./pages/feed/feed.component";
 import { MapComponent } from "./pages/map/map.component";
 import { StatisticsComponent } from './pages/statistics/statistics.component';
+import {MyThreadsComponent} from "./pages/my-threads/my-threads.component";
 
 const routes: Routes = [
   {
@@ -14,6 +15,10 @@ const routes: Routes = [
   },
   {
     path: 'feed', component: FeedComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'my-threads', component: MyThreadsComponent,
     canActivate: [AuthGuard],
   },
   {

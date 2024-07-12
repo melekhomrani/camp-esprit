@@ -29,4 +29,9 @@ export class FeedComponent implements OnInit {
   togglePostThreadVisibility(): void {
     this.showPostThread = !this.showPostThread;
   }
+  onThreadAdded() {
+    // Refresh the list of threads after a new thread is added
+    this.loadThreads();
+  }
+
 }

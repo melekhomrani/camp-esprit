@@ -7,6 +7,7 @@ import tn.esprit.campesprit.entities.Like;
 import tn.esprit.campesprit.repositories.LikeRepo;
 import tn.esprit.campesprit.repositories.ForumThreadRepo;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class LikeSvc {
@@ -40,5 +41,12 @@ public class LikeSvc {
     }
     public boolean hasLikedThread(String userId, Long threadId) {
         return likeRepo.existsByUserIdAndThreadId(userId, threadId);
+    }
+
+    public List<Long> getLikedThreadsByUserId(String userId) {
+        List<Like> likes = likeRepo.findByUserId(userId);
+        return likes.stream()
+                .map(like -> like.getThread().getId())
+                .collect(Collectors.toList());
     }
 }

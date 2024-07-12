@@ -21,8 +21,8 @@
       </button>
     </div>
     <div *ngIf="showComments">
-      <app-comment [threadId]="thread.id"></app-comment>
-      <app-add-comment [threadId]="thread.id" [userId]="userId" (click)="refreshComments()"></app-add-comment>
+      <app-comment [threadId]="thread.id" #commentComponent></app-comment>
+      <app-add-comment [threadId]="thread.id" [userId]="userId" (commentAdded)="commentComponent.loadComments()"></app-add-comment>
     </div>
   </div>
 </div>
