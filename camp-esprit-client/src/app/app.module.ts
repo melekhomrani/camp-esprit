@@ -19,6 +19,12 @@ import { CountEventsByTypeComponent } from './components/charts/count-events-by-
 import { CountEventsByUseridComponent } from './components/charts/count-events-by-userid/count-events-by-userid.component';
 import { CountEventsByTypeSecondComponent } from './components/charts/count-events-by-type-second/count-events-by-type-second.component';
 import { CountVerifiedEmailsComponent } from './components/charts/count-verified-emails/count-verified-emails.component';
+import {ChatComponent} from "./pages/chat/chat.component";
+import {ChatRoomListComponent} from './pages/chatroom-list/chatroom-list.component';
+import {ChatRoomComponent} from "./pages/chatroom/chatroom.component";
+import { CampingStatsComponent } from './pages/camping-stats/camping-stats.component';
+import { EventsDashboardComponent } from './pages/events-dashboard/events-dashboard.component';
+
 
 
 @NgModule({
@@ -26,7 +32,10 @@ import { CountVerifiedEmailsComponent } from './components/charts/count-verified
   declarations: [
     AppComponent,
     HomeComponent,
-    FeedComponent,
+    FeedComponent,EventsDashboardComponent,
+    CampingStatsComponent,
+    ChatComponent,
+    ChatRoomListComponent,ChatRoomComponent,
     ThreadComponent,
     PostThreadComponent,
     MapComponent,
@@ -38,12 +47,14 @@ import { CountVerifiedEmailsComponent } from './components/charts/count-verified
     CountEventsByUseridComponent,
     CountEventsByTypeSecondComponent,
     CountVerifiedEmailsComponent,
-  ],
+    CampingStatsComponent,
+    EventsDashboardComponent,
+      ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule,
+    FormsModule
   ],
   providers: [
     KeycloakService,

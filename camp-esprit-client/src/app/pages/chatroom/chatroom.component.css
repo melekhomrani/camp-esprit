@@ -1,0 +1,26 @@
+.chat-room {
+  padding: 20px;
+}
+
+.messages {
+  max-height: 400px;
+  overflow-y: auto;
+  background: linear-gradient(to bottom right, #4A148C, #3F51B5); /* Purple to blue gradient */
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+input {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+button {
+  padding: 10px;
+  background-color: #3F51B5; /* Blue */
+  color: white;
+  border: none;
+  border-radius: 5px;
+}

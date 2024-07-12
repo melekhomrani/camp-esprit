@@ -4,4 +4,5 @@ export interface Event {
   lng: number;
   event_date: string;
   userId: string;
+  participants : []
 }

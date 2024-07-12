@@ -1,5 +1,6 @@
-import { Component, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, OnChanges, OnInit } from '@angular/core';
 import { Chart, ChartItem, registerables } from 'chart.js';
+import { StatisticsService } from 'src/app/services/statistics/statistics.service';
 
 Chart.register(...registerables);
 
@@ -8,31 +9,43 @@ Chart.register(...registerables);
   templateUrl: './count-creds-by-type.component.html',
   styles: []
 })
-export class CountCredsByTypeComponent implements OnChanges {
-  @Input() data: any;    // Initialized with an empty array
+export class CountCredsByTypeComponent implements OnInit {
+  data: any;    // Initialized with an empty array
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes["data"]) {
-      this.renderChart();
-    }
+  credsByType: any;
+
+  constructor(private statisticsService: StatisticsService) { }
+
+  ngOnInit(): void {
+    this.CountCredsByType();
   }
 
   private renderChart(): void {
-    if (this.data.length !== undefined) {
+    if (this.credsByType !== undefined) {
       const context = document.getElementById('count-creds-by-type');
       if(context) {
         new Chart(context as ChartItem, {
           type: 'pie',
           data: {
-            labels: this.data!.map((item: any) => item.key),
+            labels: this.credsByType!.map((item: any) => item.key),
             datasets: [{
               label: 'Credentials',
-              data: this.data!.map((item: any) => item.value),
+              data: this.credsByType!.map((item: any) => item.value),
               borderWidth: 1
             }]
           }
         });
       }
     }
+  }
+
+
+  CountCredsByType() {
+    this.statisticsService.CountCredsByType().subscribe((data) => {
+      console.log("CountCredsByType", data);
+      this.credsByType = data;
+
+      this.renderChart();
+    });
   }
 }

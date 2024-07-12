@@ -1,0 +1,22 @@
+.chat-room-list {
+  padding: 20px;
+}
+
+.chat-room-list h2 {
+  color: #4A148C; /* Dark purple */
+}
+
+.chat-room-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.chat-room-list li {
+  margin: 10px 0;
+}
+
+.chat-room-list a {
+  color: #3F51B5; /* Blue */
+  text-decoration: none;
+  font-size: 18px;
+}

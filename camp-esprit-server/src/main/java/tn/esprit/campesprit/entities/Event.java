@@ -4,27 +4,30 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Date;
+
 @Entity
 @Data
 @Table(name = "events")
 public class Event {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID")
     private Long id;
 
-    @Column(name="Description")
+    @Column(name = "Description")
     private String description;
 
-    @Column(name="Latitude")
+    @Column(name = "Latitude")
     private float lat;
 
-    @Column(name="Longitude")
+    @Column(name = "Longitude")
     private float lng;
-    @Temporal(TemporalType.DATE)
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    @Column(name="Event_Date")
-    private String event_date;
 
+
+    @Column(name = "Event_Date")
+    private String eventDate;
+
+    @Column(name = "User_ID")
     private String userId;
 }
