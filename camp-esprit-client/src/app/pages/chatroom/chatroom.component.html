@@ -1,9 +1,9 @@
-<!--<div class="chat-room">-->
-<!--  <div class="messages">-->
-<!--    <div *ngFor="let message of messages">-->
-<!--      <strong>{{ message.sender }}:</strong> {{ message.content }}-->
-<!--    </div>-->
-<!--  </div>-->
-<!--  <input [(ngModel)]="newMessage" placeholder="Type your message">-->
-<!--  <button (click)="sendMessage()">Send</button>-->
-<!--</div>-->
+<div class="chat-room">
+  <div class="messages">
+    <div *ngFor="let message of messages">
+      <strong>{{ message.sender }}:</strong> {{ message.content }}
+    </div>
+  </div>
+  <input [(ngModel)]="newMessage" placeholder="Type your message">
+  <button (click)="sendMessage()">Send</button>
+</div>
