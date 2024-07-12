@@ -1,17 +1,32 @@
-# main.py
 from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
 from typing import List
 from sentence_transformers import SentenceTransformer
 import numpy as np
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
 class RecommendationRequest(BaseModel):
     userId: str
     threads: List[dict]
     userHistory: List[int]
+
+@app.options("/recommendations")
+async def options_recommendations():
+    return {"Allow": "POST, OPTIONS"}
 
 @app.post("/recommendations")
 async def get_recommendations(request: RecommendationRequest):

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ForumThread } from '../../models/Thread';
 
@@ -51,6 +51,16 @@ export class ThreadService {
     }
     getThreadsByUser(userId: string): Observable<ForumThread[]> {
         return this.http.get<ForumThread[]>(`${this.apiUrl}/${userId}`);
+    }
+    getLikedThreadsByUserId(userId: string): Observable<number[]> {
+        const urlApi = `${this.apiUrl}/likes/${userId}`
+        console.log (urlApi)
+        return this.http.get<number[]>(urlApi);
+    }
+
+    getRecommendations(requestData: any): Observable<any> {
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        return this.http.post<any>('http://localhost:8000/recommendations', requestData, { headers });
     }
 
 }
