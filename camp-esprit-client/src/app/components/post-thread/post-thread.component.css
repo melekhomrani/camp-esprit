@@ -10,15 +10,19 @@
   background-color: #545BFF;
   color: white;
   border: none;
-  margin-top: 10px;
+  margin-top: 2px;
+  margin-left: 615px;
+  margin-bottom: 5px;
+  width: 125px; /* Adjust the width value as per your design */
 }
 
+
 .btn-custom:hover {
-  background-color: #3c44d3;
+  background-color: #7274d2;
 }
 
 .btn-image {
-  background-color: #545BFF;
+  background-color: #7274d2;
   color: white;
   border: none;
 }

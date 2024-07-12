@@ -1,52 +1,35 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Tag} from "../../models/Tag";
+import { TagService} from "../../services/tag.service";
 
 @Component({
-  selector: 'app-post-thread',
+  selector: 'app-post-thread', // Adjust selector as per your component
   templateUrl: './post-thread.component.html',
   styleUrls: ['./post-thread.component.css']
 })
-export class PostThreadComponent {
-  @Output() newThread = new EventEmitter<any>();
-  content: string = '';
-  selectedFile: File | null = null;
+export class PostThreadComponent implements OnInit {
 
-  postThread(): void {
-    if (this.content) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        const thread = {
-          id: Date.now(),
-          user: 'Arij Arfaoui',
-          avatarUrl: "",
-          content: this.content,
-          imageUrl: this.selectedFile ? reader.result as string : null,
-          likes: 0,
-          comments: []
-        };
-        this.newThread.emit(thread);
-        this.content = '';
-        this.selectedFile = null;
-      };
-      if (this.selectedFile) {
-        reader.readAsDataURL(this.selectedFile);
-      } else {
-        this.newThread.emit({
-          id: Date.now(),
-          user: 'Arij Arfaoui',
-          avatarUrl: '',
-          content: this.content,
-          likes: 0,
-          comments: []
-        });
-        this.content = '';
-      }
-    }
+  tags: Tag[] = [];
+  content: string = ''; // Assuming you have this for thread content
+
+  constructor(private tagService: TagService) {}
+
+  ngOnInit(): void {
+    this.loadTags();
   }
 
-  onFileSelected(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files[0]) {
-      this.selectedFile = input.files[0];
-    }
+  loadTags(): void {
+    this.tagService.getAllTags().subscribe(
+        tags => {
+          this.tags = tags;
+        },
+        error => {
+          console.error('Error loading tags:', error);
+        }
+    );
+  }
+
+  postThread(): void {
+    // Implement your post thread logic here
   }
 }
