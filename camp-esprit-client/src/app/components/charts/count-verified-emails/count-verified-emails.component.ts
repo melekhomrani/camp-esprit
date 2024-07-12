@@ -1,5 +1,6 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Chart, ChartItem, registerables } from 'chart.js';
+import { StatisticsService } from 'src/app/services/statistics/statistics.service';
 
 Chart.register(...registerables);
 
@@ -9,13 +10,13 @@ Chart.register(...registerables);
   styles: [
   ]
 })
-export class CountVerifiedEmailsComponent implements OnChanges {
-  @Input() data: any;    // Initialized with an empty array
+export class CountVerifiedEmailsComponent implements OnInit {
+  data: any;    // Initialized with an empty array
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes["data"]) {
-      this.renderOtherChart();
-    }
+  constructor( private statisticsService: StatisticsService) { }
+
+  ngOnInit(): void {
+    this.CountVerifiedEmails();
   }
 
   private renderOtherChart(): void {
@@ -57,5 +58,13 @@ export class CountVerifiedEmailsComponent implements OnChanges {
     }
   }
 
+  CountVerifiedEmails() {
+    this.statisticsService.CountByEmailVerified().subscribe((data) => {
+      console.log("CountVerifiedEmails", data);
+      this.data = data;
+
+      this.renderOtherChart();
+    });
+  }
 
 }

@@ -1,5 +1,6 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { Chart, ChartItem, registerables } from 'chart.js';
+import { StatisticsService } from 'src/app/services/statistics/statistics.service';
 
 Chart.register(...registerables);
 
@@ -9,27 +10,29 @@ Chart.register(...registerables);
   styles: [
   ]
 })
-export class CountEventsByTypeSecondComponent {
+export class CountEventsByTypeSecondComponent implements OnInit {
 
-  @Input() data: any;    // Initialized with an empty array
+  eventsByType: any;
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes["data"]) {
-      this.renderOtherChart();
-    }
+  constructor(private statisticsService: StatisticsService) { }
+
+  ngOnInit(): void {
+    this.CountEventsByType();
+
   }
 
+
   private renderOtherChart(): void {
-    if (this.data.length !== undefined) {
+    if (this.eventsByType !== undefined) {
       const context = document.getElementById('count-events-by-type-other');
       if (context) {
         new Chart(context as ChartItem, {
           type: 'bar',
           data: {
-            labels: this.data!.filter((item: any) => item.key !== "LOGIN" && item.key !== "CODE_TO_TOKEN").map((item: any) => item.key),
+            labels: this.eventsByType!.filter((item: any) => item.key !== "LOGIN" && item.key !== "CODE_TO_TOKEN").map((item: any) => item.key),
             datasets: [{
               label: 'Events',
-              data: this.data!.filter((item: any) => item.key !== "LOGIN" && item.key !== "CODE_TO_TOKEN").map((item: any) => item.value),
+              data: this.eventsByType!.filter((item: any) => item.key !== "LOGIN" && item.key !== "CODE_TO_TOKEN").map((item: any) => item.value),
               borderWidth: 1,
               backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -68,4 +71,10 @@ export class CountEventsByTypeSecondComponent {
     }
   }
 
+  CountEventsByType() {
+    this.statisticsService.CountEventsByType().subscribe((data) => {
+      this.eventsByType = data;
+      this.renderOtherChart();
+    });
+  }
 }
