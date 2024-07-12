@@ -13,11 +13,6 @@ public class MessageController {
     @Autowired
     private MessageService messageService;
 
-    @GetMapping("/chatroom/{chatRoomId}")
-    public List<Message> getMessagesByChatRoomId(@PathVariable Long chatRoomId) {
-        return messageService.getMessagesByChatRoomId(chatRoomId);
-    }
-
     @PostMapping
     public Message saveMessage(@RequestBody Message message) {
         return messageService.saveMessage(message);

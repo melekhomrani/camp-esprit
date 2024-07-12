@@ -31,7 +31,7 @@ public class EventServices {
         event.setDescription(eventDetails.getDescription());
         event.setLat(eventDetails.getLat());
         event.setLng(eventDetails.getLng());
-        event.setEvent_date(eventDetails.getEvent_date());
+        event.setEventDate(eventDetails.getEventDate());
         event.setUserId(eventDetails.getUserId());
         return eventRepository.save(event);
     }
@@ -39,4 +39,17 @@ public class EventServices {
     public void deleteEvent(Long id) {
         eventRepository.deleteById(id);
     }
+
+
+//    public List<Event> filterEvents(String description, String eventDate) {
+//        if (description != null && eventDate != null) {
+//            return eventRepository.findByDescriptionAndEvent_date(description, eventDate);
+//        } else if (eventDate != null) {
+//            return eventRepository.findByEventDate(eventDate);
+//        } else {
+//            return eventRepository.findAll();
+//        }
+//    }
+
+
 }

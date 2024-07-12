@@ -7,6 +7,8 @@ import { MapComponent } from "./pages/map/map.component";
 import { StatisticsComponent } from './pages/statistics/statistics.component';
 import {ChatRoomComponent} from "./pages/chatroom/chatroom.component";
 import {ChatRoomListComponent} from "./pages/chatroom-list/chatroom-list.component";
+import {CampingStatsComponent} from "./pages/camping-stats/camping-stats.component";
+import {EventsDashboardComponent} from "./pages/events-dashboard/events-dashboard.component";
 
 const routes: Routes = [
   {
@@ -21,7 +23,10 @@ const routes: Routes = [
     path: 'chatroom/:id', component: ChatRoomComponent,
     canActivate: [AuthGuard],
   },{
-    path: 'chatlist', component: ChatRoomListComponent,
+    path: 'camp', component: CampingStatsComponent,
+    canActivate: [AuthGuard],
+  },{
+    path: 'dashboard-event', component: EventsDashboardComponent,
     canActivate: [AuthGuard],
   },
   {

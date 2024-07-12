@@ -12,9 +12,6 @@ public class MessageService {
     @Autowired
     private MessageRepository messageRepository;
 
-    public List<Message> getMessagesByChatRoomId(Long chatRoomId) {
-        return messageRepository.findByChatRoomId(chatRoomId);
-    }
 
     public Message saveMessage(Message message) {
         return messageRepository.save(message);

@@ -1,6 +1,23 @@
+.search-input {
+  border-radius: 20px;
+  padding-right: 50px; /* Adjust based on your button width */
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group .btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
 #map {
-  height: fit-content;
-  width: fit-content;
+  height: 80vh; /* Adjusted to fit the screen better */
+  width: 100%;
   display: flex;
   z-index: 0;
 }

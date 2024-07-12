@@ -15,7 +15,6 @@ public class EventController {
 
     @Autowired
     private EventServices eventService;
-
     @GetMapping
     public List<Event> getAllEvents() {
         return eventService.getAllEvents();
@@ -40,4 +39,11 @@ public class EventController {
     public void deleteEvent(@PathVariable Long id) {
         eventService.deleteEvent(id);
     }
+
+//    @GetMapping("/filter")
+//    public List<Event> filterEvents(@RequestParam(required = false) String description,
+//                                    @RequestParam(required = false) String eventDate) {
+//        return eventService.filterEvents(description, eventDate);
+//    }
+
 }
