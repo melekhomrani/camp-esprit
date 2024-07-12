@@ -1,7 +1,16 @@
 <div class="welcome-header">
   WELCOME TO ESPRIT CAMP FEED
 </div>
-<app-post-thread></app-post-thread>
+
+<div class="expander" (click)="togglePostThreadVisibility()">
+  <span>{{ showPostThread ? 'Cancel Post' : 'Got anything to share with the world today?' }}</span>
+  <span [class]="showPostThread ? 'fa fa-chevron-up' : 'fa fa-chevron-down'"></span>
+</div>
+
+<div *ngIf="showPostThread">
+  <app-post-thread></app-post-thread>
+</div>
+
 <div class="feed-container">
   <div class="threads-container">
     <div *ngFor="let thread of threads" class="thread-wrapper">

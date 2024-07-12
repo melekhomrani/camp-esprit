@@ -10,6 +10,7 @@ import { ForumThread } from '../../models/Thread';
 })
 export class FeedComponent implements OnInit {
   threads: ForumThread[] = [];
+  showPostThread: boolean = false;
 
   constructor(private threadService: ThreadService) { }
 
@@ -23,5 +24,9 @@ export class FeedComponent implements OnInit {
     }, error => {
       console.error('Error loading threads:', error);
     });
+  }
+
+  togglePostThreadVisibility(): void {
+    this.showPostThread = !this.showPostThread;
   }
 }
