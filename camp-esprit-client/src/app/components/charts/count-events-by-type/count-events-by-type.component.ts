@@ -1,5 +1,6 @@
-import { Component, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, OnChanges, OnInit } from '@angular/core';
 import { Chart, ChartItem, registerables } from 'chart.js';
+import { StatisticsService } from 'src/app/services/statistics/statistics.service';
 
 Chart.register(...registerables);
 
@@ -8,13 +9,15 @@ Chart.register(...registerables);
   templateUrl: './count-events-by-type.component.html',
   styles: []
 })
-export class CountEventsByTypeComponent implements OnChanges {
-  @Input() data: any;    // Initialized with an empty array
+export class CountEventsByTypeComponent implements OnInit {
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes["data"]) {
-      this.renderChart();
-    }
+
+  data: any;
+
+  constructor( private statisticsService: StatisticsService) { }
+
+  ngOnInit(): void {
+    this.CountEventsByType();
   }
 
   private renderChart(): void {
@@ -51,4 +54,13 @@ export class CountEventsByTypeComponent implements OnChanges {
     }
   }
 
+
+  CountEventsByType() {
+    this.statisticsService.CountEventsByType().subscribe((data) => {
+      console.log("CountEventsByType", data);
+      this.data = data;
+
+      this.renderChart();
+    });
+  }
 }
