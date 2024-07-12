@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <h2>Event Dashboard</h2>
+  <div class="row mt-3">
+    <div class="col">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th>Location</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let event of events">
+          <td>{{ event.userId }}</td>
+          <td>{{ event.description }}</td>
+          <td>{{ event.event_date }}</td>
+          <td>{{ event.lat }}{{ event.lng }}</td>
+          <td>
+            <button class="btn btn-primary btn-sm" (click)="editEvent(0)">Edit</button>
+            <button class="btn btn-danger btn-sm" (click)="deleteEvent(0)">Delete</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
