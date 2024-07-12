@@ -102,6 +102,6 @@ export class ThreadComponent implements OnInit {
     }
     refreshComments(): void {
         this.getCommentsCount(); // Reload comments count
-        // Optionally, update comments list if needed
+        this.loadComments();
     }
 }

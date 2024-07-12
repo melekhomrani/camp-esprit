@@ -39,4 +39,15 @@ export class ThreadService {
     hasLiked(userId: string, threadId: number): Observable<boolean> {
         return this.http.get<boolean>(`${this.apiUrl}/likes/hasLiked/${threadId}`, { params: { userId } });
     }
+
+    createThread(title: string, content: string, userId: string, tagIds: number[]): Observable<ForumThread> {
+        let params = new HttpParams()
+            .set('title', title)
+            .set('content', content)
+            .set('userId', userId)
+            .set('tagIds', tagIds.join(',')); // Convert tagIds array to comma-separated string
+
+        return this.http.post<ForumThread>(`${this.apiUrl}/create/thread`, null, { params });
+    }
+
 }

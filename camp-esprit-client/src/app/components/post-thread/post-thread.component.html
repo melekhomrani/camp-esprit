@@ -1,10 +1,18 @@
 <div class="container">
     <div class="card mb-3">
         <div class="input-group mb-3">
+            <input [(ngModel)]="title" type="text" class="form-control input-custom" placeholder="Enter title here" style="width: 100%;" />
+        </div>
+        <div class="input-group mb-3">
             <input [(ngModel)]="content" type="text" class="form-control input-custom" placeholder="What's new today?" style="width: 100%;" />
-            <div class="input-group-append d-flex justify-content-center align-items-center ms-2">
-                <!-- Display tags here -->
-                <span *ngFor="let tag of tags" class="badge bg-secondary me-1">{{ tag.name }}</span>
+        </div>
+        <div class="mb-3">
+            <div class="d-flex flex-wrap">
+                <span *ngFor="let tag of tags" class="badge mb-1"
+                      [class.bg-secondary]="!tag.selected" [class.bg-yellow]="tag.selected"
+                      (click)="toggleTagSelection(tag)">
+                  {{ tag.name }}
+                </span>
             </div>
         </div>
         <div class="text-center">
